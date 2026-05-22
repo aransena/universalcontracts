@@ -1,0 +1,11 @@
+{
+  "schema": "universal.core.lifecycle.v1",
+  "state": "closed",
+  "created_unix_ns": 1789999398000000000,
+  "prepared_unix_ns": 1789999398123456789,
+  "started_unix_ns": 1789999399123456789,
+  "ended_unix_ns": 1789999459123456789,
+  "closed_cleanly": true,
+  "error": null
+}
+

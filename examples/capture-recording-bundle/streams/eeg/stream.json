@@ -1,0 +1,24 @@
+{
+  "schema": "universal.core.stream.v1",
+  "id": "eeg",
+  "kind": "timeseries",
+  "record_format": "jsonl",
+  "message_schema": "example.eeg.v1",
+  "files": {
+    "records": "records.jsonl"
+  },
+  "timestamps": {
+    "primary": "timestamp_unix_ns",
+    "units": "nanoseconds",
+    "fields": ["timestamp_unix_ns", "timestamp_monotonic_ns"]
+  },
+  "units": {
+    "channels": "uV"
+  },
+  "stats": {
+    "records": 2,
+    "bytes": 250,
+    "dropped": 0
+  }
+}
+

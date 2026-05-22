@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universal-contracts.dev/schemas/manifest.v1.schema.json",
+  "title": "Universal Manifest v1",
+  "type": "object",
+  "required": ["schema", "id", "kind", "created_at", "producer", "contracts"],
+  "properties": {
+    "schema": { "type": "string" },
+    "id": { "type": "string", "minLength": 1 },
+    "kind": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "producer": {
+      "type": "object",
+      "required": ["project"],
+      "properties": {
+        "project": { "type": "string" },
+        "version": { "type": ["string", "null"] },
+        "command": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "contracts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "object", "array", "null"]
+      }
+    },
+    "children": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "derived": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}
+

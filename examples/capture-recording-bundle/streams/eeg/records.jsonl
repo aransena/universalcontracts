@@ -1,0 +1,3 @@
+{"schema":"example.eeg.v1","type":"eeg","seq":1,"timestamp_unix_ns":1789999399123456789,"timestamp_monotonic_ns":123456789,"channel_names":["tp9","af7"],"values":[1.2,-0.4],"units":"uV"}
+{"schema":"example.eeg.v1","type":"eeg","seq":2,"timestamp_unix_ns":1789999399127363039,"timestamp_monotonic_ns":127363039,"channel_names":["tp9","af7"],"values":[1.4,-0.2],"units":"uV"}
+

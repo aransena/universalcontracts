@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universal-contracts.dev/schemas/recording-bundle.v1.schema.json",
+  "title": "Universal Capture Recording Bundle v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "kind",
+    "created_at",
+    "contracts",
+    "producer",
+    "session",
+    "clock",
+    "lifecycle",
+    "streams"
+  ],
+  "properties": {
+    "schema": { "const": "universal.capture.recording_bundle.v1" },
+    "id": { "type": "string", "minLength": 1 },
+    "kind": { "const": "recording_bundle" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "contracts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "contains": { "const": "universal.capture.recording_bundle.v1" }
+    },
+    "producer": {
+      "type": "object",
+      "required": ["project"],
+      "properties": {
+        "project": { "type": "string" },
+        "version": { "type": ["string", "null"] },
+        "command": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "session": {
+      "type": "object",
+      "required": ["state", "closed_cleanly"],
+      "properties": {
+        "state": {
+          "enum": ["created", "prepared", "running", "closing", "closed", "cancelled", "failed"]
+        },
+        "prepared_unix_ns": { "type": ["integer", "null"] },
+        "started_unix_ns": { "type": ["integer", "null"] },
+        "ended_unix_ns": { "type": ["integer", "null"] },
+        "closed_cleanly": { "type": ["boolean", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "clock": {
+      "type": "object",
+      "required": ["primary", "units"],
+      "properties": {
+        "primary": { "type": "string" },
+        "units": { "const": "nanoseconds" }
+      },
+      "additionalProperties": true
+    },
+    "lifecycle": { "type": "string" },
+    "user_metadata_path": { "type": "string" },
+    "session_events": { "type": "string" },
+    "streams": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string" }
+    },
+    "derived": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}
+

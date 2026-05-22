@@ -1,0 +1,28 @@
+{
+  "schema": "universal.core.stream.v1",
+  "id": "world_video",
+  "kind": "video",
+  "record_format": "binary_payloads_with_jsonl_index",
+  "message_schema": "example.video_frame.v1",
+  "files": {
+    "payloads": "payloads.bin",
+    "index": "index.jsonl"
+  },
+  "timestamps": {
+    "primary": "timestamp_unix_ns",
+    "units": "nanoseconds",
+    "fields": ["timestamp_unix_ns", "timestamp_monotonic_ns"]
+  },
+  "payload": {
+    "encoding": "jpeg",
+    "container": "concatenated"
+  },
+  "sequence": {
+    "base": 1
+  },
+  "stats": {
+    "records": 2,
+    "bytes": 20,
+    "dropped": 0
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universal-contracts.dev/schemas/stream.v1.schema.json",
+  "title": "Universal Stream v1",
+  "type": "object",
+  "required": ["schema", "id", "kind", "record_format", "files", "timestamps", "stats"],
+  "properties": {
+    "schema": { "const": "universal.core.stream.v1" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "kind": {
+      "enum": [
+        "timeseries",
+        "events",
+        "messages",
+        "video",
+        "audio",
+        "binary",
+        "raw_packets",
+        "state"
+      ]
+    },
+    "record_format": {
+      "enum": ["jsonl", "binary_payloads_with_jsonl_index"]
+    },
+    "message_schema": { "type": ["string", "null"] },
+    "files": {
+      "type": "object",
+      "properties": {
+        "records": { "type": "string" },
+        "payloads": { "type": "string" },
+        "index": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "timestamps": {
+      "type": "object",
+      "required": ["primary"],
+      "properties": {
+        "primary": { "type": "string" },
+        "units": { "const": "nanoseconds" },
+        "fields": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "records": { "type": "integer", "minimum": 0 },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "dropped": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
+

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universal-contracts.dev/schemas/payload-index-row.v1.schema.json",
+  "title": "Universal Payload Index Row v1",
+  "type": "object",
+  "required": ["seq", "offset", "size"],
+  "properties": {
+    "seq": { "type": "integer", "minimum": 0 },
+    "offset": { "type": "integer", "minimum": 0 },
+    "size": { "type": "integer", "minimum": 0 },
+    "timestamp_unix_ns": { "type": ["integer", "null"] },
+    "timestamp_monotonic_ns": { "type": ["integer", "null"] },
+    "timestamp_sensor_ns": { "type": ["integer", "null"] },
+    "format": { "type": "string" },
+    "encoding": { "type": "string" },
+    "duration_ns": { "type": ["integer", "null"] },
+    "sample_rate_hz": { "type": ["number", "null"] },
+    "channels": { "type": ["integer", "null"] },
+    "width": { "type": ["integer", "null"] },
+    "height": { "type": ["integer", "null"] },
+    "checksum": { "type": ["string", "null"] },
+    "header": { "type": ["object", "null"] }
+  },
+  "additionalProperties": true
+}
+

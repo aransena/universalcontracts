@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universal-contracts.dev/schemas/artifact.v1.schema.json",
+  "title": "Universal Artifact v1",
+  "type": "object",
+  "required": ["schema", "id", "kind", "created_at", "producer", "sources", "files", "status"],
+  "properties": {
+    "schema": { "const": "universal.core.artifact.v1" },
+    "id": { "type": "string", "minLength": 1 },
+    "kind": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "producer": {
+      "type": "object",
+      "required": ["project"],
+      "properties": {
+        "project": { "type": "string" },
+        "version": { "type": ["string", "null"] },
+        "command": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "ref"],
+        "properties": {
+          "kind": { "type": "string" },
+          "ref": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "status": { "enum": ["ok", "partial", "failed", "unknown"] }
+  },
+  "additionalProperties": true
+}
+

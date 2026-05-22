@@ -1,0 +1,26 @@
+{
+  "schema": "universal.core.stream.v1",
+  "id": "audio",
+  "kind": "audio",
+  "record_format": "binary_payloads_with_jsonl_index",
+  "message_schema": "example.audio_chunk.v1",
+  "files": {
+    "payloads": "payloads.bin",
+    "index": "index.jsonl"
+  },
+  "timestamps": {
+    "primary": "timestamp_unix_ns",
+    "units": "nanoseconds",
+    "fields": ["timestamp_unix_ns"]
+  },
+  "payload": {
+    "encoding": "pcm_s16le",
+    "container": "concatenated"
+  },
+  "stats": {
+    "records": 1,
+    "bytes": 8,
+    "dropped": 0
+  }
+}
+

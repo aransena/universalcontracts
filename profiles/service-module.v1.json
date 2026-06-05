@@ -1,0 +1,74 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.service_module.v1",
+  "kind": "profile",
+  "title": "Service Module Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A backend service or worker module that exposes commands, configuration, APIs, health, deployment, and operational handoff points.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.core.project.v1",
+    "universal.core.command.v1",
+    "universal.core.config.v1",
+    "universal.core.environment.v1",
+    "universal.core.api_surface.v1",
+    "universal.core.observability.v1",
+    "universal.core.permissions.v1",
+    "universal.api.service_surface.v1",
+    "universal.api.background_job.v1",
+    "universal.ops.deployment.v1",
+    "universal.ops.service_health.v1"
+  ],
+  "domain_packs": ["api-services", "application-services", "deployment-ops"],
+  "required_fields": {
+    "module_descriptor": ["schema", "id", "kind", "producer", "contracts", "commands", "configuration", "environment"],
+    "service_surface": ["schema", "id", "kind", "auth", "endpoints", "runtime", "observability"],
+    "operations": ["deployment", "health", "logs", "metrics"]
+  },
+  "allowed_values": {
+    "module_descriptor.kind": ["service_module", "api_service", "worker_service"]
+  },
+  "schemas": [],
+  "examples": [],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "versioning": "Breaking changes require a new module descriptor id or declared compatibility note."
+  },
+  "integration_points": [
+    {
+      "name": "commands",
+      "contracts": ["universal.core.command.v1"],
+      "required": true,
+      "description": "Build, run, test, validate, package, and migration commands."
+    },
+    {
+      "name": "api",
+      "contracts": ["universal.core.api_surface.v1", "universal.api.service_surface.v1"],
+      "required": true,
+      "description": "Callable service endpoints and schemas."
+    },
+    {
+      "name": "operations",
+      "contracts": ["universal.ops.deployment.v1", "universal.ops.service_health.v1"],
+      "required": true,
+      "description": "Deployment status, health checks, logs, metrics, and rollback signals."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Descriptor declares selected contracts and local profiles.",
+      "Commands are runnable or explicitly marked unavailable in the target environment.",
+      "Configuration and secret references are declared without literal secret values.",
+      "API surface has request, response, auth, error, and limit semantics.",
+      "Health and observability handoff points are discoverable."
+    ]
+  },
+  "agent_guidance": [
+    "Prefer this profile for backend services, workers, and deployable service packages.",
+    "Keep framework-specific details in local schemas or profiles.",
+    "Report command, API, configuration, and health surfaces when finishing implementation."
+  ]
+}

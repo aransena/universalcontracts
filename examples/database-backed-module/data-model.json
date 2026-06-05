@@ -1,0 +1,70 @@
+{
+  "schema": "universal.db.data_model.v1",
+  "id": "example_customer_account_model",
+  "kind": "data_model",
+  "created_at": "2026-06-05T12:00:00Z",
+  "producer": {
+    "project": "example-billing-service",
+    "version": "0.1.0"
+  },
+  "contracts": [
+    "universal.db.database_schema.v1",
+    "universal.db.data_model.v1",
+    "universal.db.query_surface.v1",
+    "universal.db.data_access_policy.v1",
+    "universal.db.transaction_boundary.v1",
+    "universal.db.migration.v1",
+    "universal.db.seed_data.v1"
+  ],
+  "profile": "universal.profile.database_backed_module.v1",
+  "subject": {
+    "module": "customer_accounts",
+    "owner": "billing"
+  },
+  "models": {
+    "customer_account": {
+      "description": "Billable account owned by one organization.",
+      "storage": "tables/customer_accounts",
+      "lifecycle": ["pending", "active", "suspended", "deleted"]
+    },
+    "subscription": {
+      "description": "Subscription state synchronized from billing events.",
+      "storage": "tables/subscriptions",
+      "lifecycle": ["trialing", "active", "past_due", "cancelled"]
+    }
+  },
+  "fields": {
+    "customer_account": {
+      "id": {
+        "type": "string",
+        "required": true,
+        "sensitive": false
+      },
+      "tenant_id": {
+        "type": "string",
+        "required": true,
+        "sensitive": false
+      },
+      "billing_email": {
+        "type": "string",
+        "required": true,
+        "sensitive": true
+      }
+    }
+  },
+  "storage": {
+    "database_schema": "schema/customer_accounts.schema.json",
+    "migrations": "migrations/",
+    "seed_data": "seed/reference-plans.json"
+  },
+  "interfaces": {
+    "queries": "query-surface.json",
+    "access_policy": "data-access-policy.json",
+    "transactions": "transaction-boundaries.json",
+    "events": "change-stream.json"
+  },
+  "validation": {
+    "commands": ["test database", "validate migrations"],
+    "fixtures": ["seed/reference-plans.json"]
+  }
+}

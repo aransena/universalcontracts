@@ -1,0 +1,49 @@
+{
+  "schema": "universal.data.dataset.v1",
+  "id": "example_sensor_dataset_v1",
+  "kind": "dataset",
+  "created_at": "2026-05-22T12:00:00Z",
+  "producer": {
+    "project": "example-pipeline",
+    "version": "0.1.0",
+    "command": "pipeline export --date 2026-05-22"
+  },
+  "contracts": [
+    "universal.data.dataset.v1",
+    "universal.data.pipeline_run.v1",
+    "universal.core.provenance.v1"
+  ],
+  "files": {
+    "data": "data/sensor-readings.jsonl",
+    "schema": "schemas/sensor-reading.schema.json",
+    "checksums": "checksums.json"
+  },
+  "format": {
+    "media_type": "application/jsonl",
+    "encoding": "utf-8",
+    "compression": null
+  },
+  "records": {
+    "count": 1200
+  },
+  "fields": {
+    "timestamp_unix_ns": {
+      "type": "integer",
+      "units": "nanoseconds"
+    },
+    "temperature_c": {
+      "type": "number",
+      "units": "celsius"
+    }
+  },
+  "sources": {
+    "recording_bundle": "../capture-recording-bundle/manifest.json"
+  },
+  "privacy": {
+    "sensitivity": "non_personal_operational_data"
+  },
+  "license": {
+    "status": "internal_use"
+  }
+}
+

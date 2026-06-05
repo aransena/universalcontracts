@@ -1,0 +1,70 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.data_producer_consumer.v1",
+  "kind": "profile",
+  "title": "Data Producer Consumer Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A module that produces, consumes, validates, transforms, shares, or analyzes datasets and streams.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.data.dataset.v1",
+    "universal.data.pipeline_run.v1",
+    "universal.core.stream.v1",
+    "universal.core.artifact.v1",
+    "universal.core.provenance.v1",
+    "universal.core.test_run.v1",
+    "universal.db.data_access_policy.v1"
+  ],
+  "domain_packs": ["data-pipelines", "databases-storage", "capture", "ml-systems"],
+  "required_fields": {
+    "dataset": ["schema", "id", "kind", "created_at", "producer", "files", "fields", "sources"],
+    "pipeline_run": ["schema", "id", "kind", "inputs", "outputs", "parameters", "lifecycle"],
+    "quality": ["validation", "metrics", "privacy", "provenance"]
+  },
+  "allowed_values": {
+    "dataset.kind": ["dataset", "feature_set", "report_dataset", "export_dataset"]
+  },
+  "schemas": [],
+  "examples": ["examples/data-pipeline/dataset.json"],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "field_changes_require_consumer_review": true
+  },
+  "integration_points": [
+    {
+      "name": "data_shape",
+      "contracts": ["universal.data.dataset.v1", "universal.core.stream.v1"],
+      "required": true,
+      "description": "Files, records, fields, types, units, and stream semantics."
+    },
+    {
+      "name": "lineage",
+      "contracts": ["universal.core.provenance.v1", "universal.data.pipeline_run.v1"],
+      "required": true,
+      "description": "Inputs, transforms, outputs, parameters, and reproducibility."
+    },
+    {
+      "name": "data_policy",
+      "contracts": ["universal.db.data_access_policy.v1"],
+      "required": false,
+      "description": "Privacy, retention, sharing, access, and export constraints."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Fields declare names, types, units, and sensitivity where applicable.",
+      "Files and record counts are discoverable.",
+      "Lineage links inputs, transforms, and outputs.",
+      "Privacy, rights, and retention are declared for shared data.",
+      "Quality metrics or validation reports are linked when available."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile when independent modules exchange data.",
+    "Treat fields and provenance as public integration surfaces.",
+    "Report changed fields, source data, privacy behavior, and validation."
+  ]
+}

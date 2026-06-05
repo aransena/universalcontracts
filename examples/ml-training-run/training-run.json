@@ -1,0 +1,40 @@
+{
+  "schema": "universal.ml.training_run.v1",
+  "id": "example_training_run_001",
+  "kind": "training_run",
+  "created_at": "2026-05-22T12:00:00Z",
+  "producer": {
+    "project": "example-ml-training",
+    "version": "0.1.0",
+    "command": "train --config configs/run-001.json"
+  },
+  "contracts": [
+    "universal.ml.training_run.v1",
+    "universal.ml.model_artifact.v1",
+    "universal.data.dataset.v1",
+    "universal.core.lifecycle.v1",
+    "universal.core.provenance.v1"
+  ],
+  "lifecycle": "lifecycle.json",
+  "inputs": {
+    "training_dataset": "../data-pipeline/dataset.json",
+    "configuration": "configs/run-001.json",
+    "seed": 1234
+  },
+  "outputs": {
+    "model": "model-artifact.json",
+    "metrics": "metrics/final.json",
+    "logs": "logs/train.log"
+  },
+  "parameters": {
+    "epochs": 5,
+    "batch_size": 32
+  },
+  "metrics": {
+    "validation_accuracy": {
+      "value": 0.91,
+      "unit": "ratio",
+      "direction": "higher_is_better"
+    }
+  }
+}

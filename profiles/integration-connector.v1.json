@@ -1,0 +1,72 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.integration_connector.v1",
+  "kind": "profile",
+  "title": "Integration Connector Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A connector between an application and an external or internal system, including auth, mappings, webhooks, retries, sync, and support diagnostics.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.app.integration_connector.v1",
+    "universal.app.auth_identity.v1",
+    "universal.api.webhook.v1",
+    "universal.api.background_job.v1",
+    "universal.workflow.queue.v1",
+    "universal.db.data_model.v1",
+    "universal.db.transaction_boundary.v1",
+    "universal.core.observability.v1",
+    "universal.core.permissions.v1"
+  ],
+  "domain_packs": ["application-services", "api-services", "workflow-automation", "databases-storage"],
+  "required_fields": {
+    "connector": ["schema", "id", "kind", "target", "auth", "endpoints", "mappings", "delivery", "observability"],
+    "mapping": ["local_model", "external_schema", "source_of_truth", "conflicts"],
+    "operations": ["retries", "idempotency", "health", "support"]
+  },
+  "allowed_values": {
+    "connector.kind": ["integration_connector"]
+  },
+  "schemas": [],
+  "examples": [],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "external_schema_changes_require_mapping_review": true
+  },
+  "integration_points": [
+    {
+      "name": "external_surface",
+      "contracts": ["universal.app.integration_connector.v1", "universal.api.webhook.v1"],
+      "required": true,
+      "description": "External API, webhook, file, queue, or polling surface."
+    },
+    {
+      "name": "data_mapping",
+      "contracts": ["universal.db.data_model.v1"],
+      "required": true,
+      "description": "Mapping between local models and external schemas."
+    },
+    {
+      "name": "operations",
+      "contracts": ["universal.api.background_job.v1", "universal.core.observability.v1"],
+      "required": true,
+      "description": "Retries, reconciliation, health, alerts, and support diagnostics."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Connector auth and secret references are declared without literal secret values.",
+      "Mappings declare source-of-truth and conflict behavior.",
+      "Retries and external side effects are idempotent or explicitly unsafe.",
+      "Webhooks and polling surfaces declare delivery and failure semantics.",
+      "Health, logs, and repair diagnostics are discoverable."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile for third-party integrations, imports, exports, and sync jobs.",
+    "Do not hide provider-specific details; put them in local profile fields.",
+    "Report target system, auth, mappings, retries, and health behavior."
+  ]
+}

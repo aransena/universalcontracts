@@ -1,0 +1,76 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.database_backed_module.v1",
+  "kind": "profile",
+  "title": "Database-Backed Module Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A module whose public behavior depends on database schemas, models, queries, policies, transactions, migrations, and seed data.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.core.project.v1",
+    "universal.core.command.v1",
+    "universal.core.config.v1",
+    "universal.core.provenance.v1",
+    "universal.db.database_schema.v1",
+    "universal.db.data_model.v1",
+    "universal.db.query_surface.v1",
+    "universal.db.data_access_policy.v1",
+    "universal.db.transaction_boundary.v1",
+    "universal.db.migration.v1",
+    "universal.db.seed_data.v1",
+    "universal.db.backup.v1"
+  ],
+  "domain_packs": ["databases-storage", "api-services", "application-services"],
+  "required_fields": {
+    "module_descriptor": ["schema", "id", "kind", "contracts", "commands", "configuration"],
+    "database_schema": ["schema", "id", "kind", "engine", "objects", "fields", "relationships", "migrations"],
+    "query_surface": ["schema", "id", "kind", "subject", "queries", "parameters", "results", "permissions"],
+    "data_model": ["schema", "id", "kind", "models", "fields", "storage", "interfaces"]
+  },
+  "allowed_values": {
+    "module_descriptor.kind": ["database_module", "repository_module", "data_service"]
+  },
+  "schemas": [],
+  "examples": ["examples/database-backed-module/data-model.json"],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "migration_required_for_breaking_storage_changes": true
+  },
+  "integration_points": [
+    {
+      "name": "storage_shape",
+      "contracts": ["universal.db.database_schema.v1", "universal.db.migration.v1"],
+      "required": true,
+      "description": "Database objects, versions, and migration path."
+    },
+    {
+      "name": "application_model",
+      "contracts": ["universal.db.data_model.v1", "universal.db.query_surface.v1"],
+      "required": true,
+      "description": "Repository/model surface and supported queries."
+    },
+    {
+      "name": "data_safety",
+      "contracts": ["universal.db.data_access_policy.v1", "universal.db.transaction_boundary.v1"],
+      "required": true,
+      "description": "Permissions, tenant boundaries, consistency, and retry behavior."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Database schema and application data model are both discoverable.",
+      "Public queries declare parameters, results, permissions, and limits.",
+      "Migrations declare ordering, effects, safety, and rollback or irreversibility.",
+      "Sensitive fields and tenant-scoped objects have access policy references.",
+      "Seed data and backups are safe for their declared environments."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile for modules that own persistent application data.",
+    "Do not add repository methods without updating query surface and access policy descriptors.",
+    "Treat migrations, transaction boundaries, and seed data as integration surfaces."
+  ]
+}

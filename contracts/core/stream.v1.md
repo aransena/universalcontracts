@@ -20,7 +20,7 @@ Common stream kinds:
 - `raw_packets`: raw device or protocol packets.
 - `state`: snapshots or status updates.
 
-## Required Descriptor Fields
+## Required Shape
 
 Each stream has a `stream.json` descriptor:
 
@@ -33,6 +33,12 @@ Each stream has a `stream.json` descriptor:
 - `files`: file roles relative to the stream directory.
 - `timestamps`: primary timestamp fields and clock semantics.
 - `stats`: record count, bytes, drops, and optional quality metrics.
+
+## Extension Points
+
+Projects may add stream-kind-specific fields, payload metadata, quality metrics,
+compression, calibration, schema references, or profile declarations. Extensions
+must not change file roles, timestamp semantics, or record ordering meaning.
 
 ## JSONL Stream Rules
 
@@ -58,3 +64,16 @@ For `record_format = binary_payloads_with_jsonl_index`:
 - Consumers must be able to skip unknown streams.
 - Producers must preserve record order within a stream.
 
+## Validation Rules
+
+- Validate required descriptor fields.
+- For JSONL streams, verify every non-empty line is a JSON object.
+- For binary indexed streams, verify index offsets and sizes against payload
+  bytes.
+- Check final stats when the parent lifecycle is final.
+
+## Agent Implementation Notes
+
+Use stream descriptors as the source of truth for record format, timestamps,
+files, and stats. Add sensor-specific or message-specific detail through local
+schemas and profile fields.

@@ -1,0 +1,48 @@
+{
+  "schema": "universal.edge.firmware_project.v1",
+  "id": "example_sensor_firmware",
+  "kind": "firmware_project",
+  "producer": {
+    "project": "example-sensor-firmware",
+    "version": "0.1.0"
+  },
+  "contracts": [
+    "universal.edge.firmware_project.v1",
+    "universal.edge.board_target.v1",
+    "universal.edge.firmware_image.v1",
+    "universal.core.command.v1",
+    "universal.core.environment.v1"
+  ],
+  "targets": {
+    "default": "board-target.json",
+    "simulator": "sim-target.json"
+  },
+  "sources": {
+    "directories": ["src", "drivers", "include"],
+    "generated": ["generated/registers.h"]
+  },
+  "build": {
+    "commands": {
+      "debug": "firmware build --profile debug",
+      "release": "firmware build --profile release"
+    },
+    "artifacts": {
+      "image": "build/release/firmware.bin",
+      "map": "build/release/firmware.map"
+    }
+  },
+  "runtime": {
+    "mode": "bare_metal_with_scheduler"
+  },
+  "configuration": {
+    "compile_time_flags": ["SENSOR_RATE_HZ"],
+    "secrets": []
+  },
+  "tests": {
+    "unit": "firmware test",
+    "simulator": "firmware sim-test"
+  },
+  "outputs": {
+    "firmware_image": "firmware-image.json"
+  }
+}

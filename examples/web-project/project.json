@@ -1,0 +1,51 @@
+{
+  "schema": "universal.web.project.v1",
+  "id": "example_web_project",
+  "kind": "web_project",
+  "producer": {
+    "project": "example-web",
+    "version": "0.1.0"
+  },
+  "contracts": [
+    "universal.web.project.v1",
+    "universal.core.command.v1",
+    "universal.core.config.v1",
+    "universal.core.environment.v1"
+  ],
+  "framework": {
+    "family": "component_routed_web_app",
+    "rendering_mode": "hybrid",
+    "routing_mode": "file_or_manifest_backed"
+  },
+  "package": {
+    "dependency_manifest": "package.json",
+    "lockfile": "lockfile"
+  },
+  "commands": {
+    "install": "project install",
+    "build": "project build",
+    "run": "project run",
+    "test": "project test",
+    "validate": "project validate"
+  },
+  "configuration": {
+    "environment_variables": [
+      {
+        "name": "APP_API_BASE_URL",
+        "required": true,
+        "secret": false
+      }
+    ]
+  },
+  "build_outputs": {
+    "static_assets": "dist/assets",
+    "server_bundle": "dist/server"
+  },
+  "deployment_targets": [
+    {
+      "kind": "server_runtime",
+      "environment": "preview"
+    }
+  ]
+}
+

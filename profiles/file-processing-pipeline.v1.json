@@ -1,0 +1,72 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.file_processing_pipeline.v1",
+  "kind": "profile",
+  "title": "File Processing Pipeline Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A module that accepts files, validates them, stores them, extracts or transforms content, and exposes derived artifacts.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.app.file_upload.v1",
+    "universal.db.object_store_layout.v1",
+    "universal.media.media_asset.v1",
+    "universal.media.rendition.v1",
+    "universal.knowledge.extraction_run.v1",
+    "universal.data.pipeline_run.v1",
+    "universal.core.artifact.v1",
+    "universal.core.provenance.v1",
+    "universal.core.permissions.v1"
+  ],
+  "domain_packs": ["application-services", "media-assets", "knowledge-documents", "data-pipelines", "databases-storage"],
+  "required_fields": {
+    "upload": ["schema", "id", "kind", "inputs", "storage", "validation", "processing", "security"],
+    "storage": ["schema", "id", "kind", "buckets", "prefixes", "access", "retention"],
+    "outputs": ["artifacts", "provenance", "status", "validation"]
+  },
+  "allowed_values": {
+    "upload.kind": ["file_upload"]
+  },
+  "schemas": [],
+  "examples": [],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "output_shape_changes_require_consumer_review": true
+  },
+  "integration_points": [
+    {
+      "name": "ingest",
+      "contracts": ["universal.app.file_upload.v1"],
+      "required": true,
+      "description": "Accepted files, validation, storage, security, and processing trigger."
+    },
+    {
+      "name": "storage",
+      "contracts": ["universal.db.object_store_layout.v1"],
+      "required": true,
+      "description": "Bucket, prefix, object role, access, retention, and lifecycle."
+    },
+    {
+      "name": "derived_outputs",
+      "contracts": ["universal.core.artifact.v1", "universal.media.rendition.v1", "universal.knowledge.extraction_run.v1"],
+      "required": true,
+      "description": "Artifacts, renditions, extracted content, reports, and provenance."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Upload surfaces declare accepted file types, limits, validation, and access rules.",
+      "Stored objects declare layout, retention, and deletion behavior.",
+      "Derived outputs link to source files and provenance.",
+      "Processing failures are represented as inspectable outputs or diagnostics.",
+      "Sensitive files have privacy and permission behavior."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile for imports, attachments, media pipelines, document processing, and file-derived data.",
+    "Treat storage layout and derived artifacts as public integration surfaces.",
+    "Report validation, storage, processing outputs, provenance, and deletion behavior."
+  ]
+}

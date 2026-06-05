@@ -1,0 +1,50 @@
+{
+  "schema": "universal.agent.tool_surface.v1",
+  "id": "example_project_tools",
+  "kind": "tool_surface",
+  "producer": {
+    "project": "example-agent-tools",
+    "version": "0.1.0"
+  },
+  "contracts": [
+    "universal.agent.tool_surface.v1",
+    "universal.core.command.v1",
+    "universal.core.permissions.v1"
+  ],
+  "tools": {
+    "validate_contracts": {
+      "description": "Run local Universal Contracts checks.",
+      "input_schema": "schemas/validate-contracts.input.json",
+      "output_schema": "schemas/validate-contracts.output.json"
+    },
+    "summarize_catalog": {
+      "description": "Summarize available contract IDs.",
+      "input_schema": "schemas/summarize-catalog.input.json",
+      "output_schema": "schemas/summarize-catalog.output.json"
+    }
+  },
+  "side_effects": {
+    "validate_contracts": ["read_workspace"],
+    "summarize_catalog": ["read_workspace"]
+  },
+  "permissions": {
+    "required": [
+      {
+        "scope": "workspace_read",
+        "reason": "Read contract files and examples"
+      }
+    ]
+  },
+  "errors": {
+    "validation_failed": {
+      "retryable": false
+    },
+    "missing_catalog": {
+      "retryable": false
+    }
+  },
+  "runtime": {
+    "kind": "local_command_surface"
+  }
+}
+

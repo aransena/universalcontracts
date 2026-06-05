@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universal-contracts.dev/schemas/catalog.v1.schema.json",
+  "title": "Universal Contracts Catalog v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "catalog_version",
+    "minimum_maturity",
+    "contracts_root",
+    "profiles_root",
+    "contracts",
+    "domain_packs",
+    "profiles"
+  ],
+  "properties": {
+    "schema": { "const": "universal.contract_catalog.v1" },
+    "catalog_version": { "type": "string" },
+    "minimum_maturity": { "enum": ["draft", "candidate", "stable", "deprecated"] },
+    "contracts_root": { "type": "string" },
+    "profiles_root": { "type": "string" },
+    "contracts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "path",
+          "area",
+          "maturity",
+          "composes_core",
+          "related_domain_packs",
+          "example_paths"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^universal\\.[a-z0-9_]+\\.[a-z0-9_]+\\.v[0-9]+$" },
+          "title": { "type": "string" },
+          "path": { "type": "string" },
+          "area": { "enum": ["core", "domain"] },
+          "domain": { "type": ["string", "null"] },
+          "maturity": { "enum": ["draft", "candidate", "stable", "deprecated"] },
+          "maturity_reason": { "type": "string" },
+          "candidate_since": { "type": "string" },
+          "promotion_basis": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "replacement": { "type": "string" },
+          "composes_core": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "related_domain_packs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "example_paths": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "domain_packs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "maturity", "related_domain_packs", "contract_count"],
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string" },
+          "maturity": { "enum": ["draft", "candidate", "stable", "deprecated"] },
+          "maturity_reason": { "type": "string" },
+          "candidate_since": { "type": "string" },
+          "promotion_basis": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "replacement": { "type": "string" },
+          "related_domain_packs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "contract_count": { "type": "integer", "minimum": 0 }
+        },
+        "additionalProperties": true
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "path",
+          "maturity",
+          "base_contracts",
+          "domain_packs",
+          "example_paths"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^universal\\.profile\\.[a-z0-9_]+\\.v[0-9]+$"
+          },
+          "title": { "type": "string" },
+          "path": { "type": "string" },
+          "profile_type": { "type": ["string", "null"] },
+          "maturity": { "enum": ["draft", "candidate", "stable", "deprecated"] },
+          "candidate_since": { "type": ["string", "null"] },
+          "base_contracts": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "domain_packs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "example_paths": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "minimum_conformance": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,5 +1,9 @@
 # Agent Implementation Brief
 
+## Target Profile IDs
+
+- `universal.profile...`
+
 ## Target Contract IDs
 
 - `universal...`
@@ -20,6 +24,10 @@ List required states and transitions.
 
 List commands that prove conformance.
 
+## Profile Conformance Checks
+
+List required profile checks and the implementation evidence for each.
+
 ## Invariants To Preserve
 
 List behavior that must not regress.
@@ -27,4 +35,3 @@ List behavior that must not regress.
 ## Project-Specific Choices
 
 Record naming, schemas, storage choices, and intentional deviations.
-

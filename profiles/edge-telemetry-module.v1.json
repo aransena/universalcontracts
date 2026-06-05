@@ -1,0 +1,71 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.edge_telemetry_module.v1",
+  "kind": "profile",
+  "title": "Edge Telemetry Module Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "An edge device, SBC, firmware, or IoT module that captures telemetry, controls devices, syncs data, and exposes health.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.edge.edge_deployment.v1",
+    "universal.edge.telemetry_control.v1",
+    "universal.edge.sbc_service.v1",
+    "universal.capture.device.v1",
+    "universal.core.stream.v1",
+    "universal.realtime.session.v1",
+    "universal.iot.device_fleet.v1",
+    "universal.ops.service_health.v1"
+  ],
+  "domain_packs": ["edge-devices", "robotics-iot", "capture", "realtime-systems", "deployment-ops"],
+  "required_fields": {
+    "edge_deployment": ["schema", "id", "kind", "target", "software", "hardware", "configuration", "health"],
+    "telemetry": ["schema", "id", "kind", "target", "streams", "commands", "permissions"],
+    "stream": ["schema", "id", "kind", "record_format", "timestamps", "stats"]
+  },
+  "allowed_values": {
+    "edge_deployment.kind": ["edge_deployment"]
+  },
+  "schemas": [],
+  "examples": ["examples/edge-sbc-deployment/deployment.json", "examples/edge-firmware-project/firmware-project.json"],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "stream_shape_changes_require_consumer_review": true
+  },
+  "integration_points": [
+    {
+      "name": "telemetry_streams",
+      "contracts": ["universal.core.stream.v1", "universal.capture.device.v1"],
+      "required": true,
+      "description": "Stream format, timestamps, stats, and capture capabilities."
+    },
+    {
+      "name": "device_control",
+      "contracts": ["universal.edge.telemetry_control.v1", "universal.iot.command_log.v1"],
+      "required": false,
+      "description": "Commands, permissions, acknowledgements, and feedback."
+    },
+    {
+      "name": "field_operations",
+      "contracts": ["universal.edge.edge_deployment.v1", "universal.ops.service_health.v1"],
+      "required": true,
+      "description": "Device deployment, configuration, health, connectivity, and rollback."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Stream descriptors declare timestamp fields, record format, files, and stats.",
+      "Device target and deployment context are explicit.",
+      "Telemetry permissions and control commands are declared.",
+      "Offline, retry, and connectivity behavior are documented.",
+      "Health and diagnostics are discoverable for field support."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile for device, firmware, telemetry, and edge-service integration work.",
+    "Preserve stream timestamp semantics and deployment context.",
+    "Report telemetry streams, device targets, permissions, and field health checks."
+  ]
+}

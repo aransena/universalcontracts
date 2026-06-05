@@ -7,7 +7,7 @@ Contract ID: `universal.core.manifest.v1`
 Define a common manifest pattern for bundles, sessions, artifacts, datasets,
 plugins, and other self-describing outputs.
 
-## Required Fields
+## Required Shape
 
 - `schema`: manifest schema or contract ID.
 - `id`: stable identifier for this bundle or artifact.
@@ -36,6 +36,12 @@ plugins, and other self-describing outputs.
 - Consumers should follow manifest file roles before falling back to conventional
   filenames.
 
+## Extension Points
+
+Projects may add domain-specific metadata, child references, validation results,
+or profile declarations. Extensions should be additive and should not require
+user edits to producer-owned manifest fields.
+
 ## Invariants
 
 - `schema`, `id`, `kind`, and `created_at` must be present.
@@ -43,3 +49,14 @@ plugins, and other self-describing outputs.
 - Producer-owned fields must not require user editing.
 - User-editable metadata should live outside the producer-owned manifest.
 
+## Validation Rules
+
+- Validate required portable fields.
+- Resolve relative paths and reject paths that escape the manifest root.
+- Warn on unknown fields unless a declared profile closes shape.
+- Warn when user-editable metadata is embedded in producer-owned fields.
+
+## Agent Implementation Notes
+
+Read manifests before guessing filenames. Preserve file roles and relative path
+semantics when adding project-specific metadata.

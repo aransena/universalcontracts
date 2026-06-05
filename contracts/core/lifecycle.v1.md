@@ -21,7 +21,11 @@ recordings, jobs, services, uploads, exports, training runs, and replay sessions
 
 Domain contracts may restrict this set.
 
-## Required Lifecycle Fields
+## Required Shape
+
+A lifecycle object is usually embedded in, or stored beside, a parent descriptor.
+It does not need its own `id` or `kind` unless a project publishes standalone
+lifecycle records.
 
 - `schema`: `universal.core.lifecycle.v1`.
 - `state`: current lifecycle state.
@@ -54,6 +58,12 @@ For capture-like systems, `prepared` may connect to live sources and drain data,
 but persistent user data must not be recorded until `running` unless a domain
 contract explicitly defines pre-roll behavior.
 
+## Extension Points
+
+Domains may restrict allowed states, add domain-specific transition rules, or
+attach state-specific metadata. Extensions must not redefine final-state meaning
+or `closed_cleanly` semantics.
+
 ## Invariants
 
 - Final states are `closed`, `cancelled`, and `failed`.
@@ -64,3 +74,15 @@ contract explicitly defines pre-roll behavior.
 - `failed` outputs must remain inspectable unless the project has an explicit
   cleanup policy.
 
+## Validation Rules
+
+- Check that `state` is known to the base or domain lifecycle.
+- Check that final states include `ended_unix_ns`.
+- Check that `closed_cleanly` is true only for `closed`.
+- Warn when failed states omit structured error information.
+
+## Agent Implementation Notes
+
+Use lifecycle fields to decide whether outputs are still mutable, finalized,
+cancelled, or failed. Do not treat non-final outputs as replayable unless a
+domain contract explicitly allows it.

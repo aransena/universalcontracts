@@ -1,0 +1,70 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.cli_tool_package.v1",
+  "kind": "profile",
+  "title": "CLI Tool Package Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A command-line tool or package with stable commands, configuration, structured output, tests, artifacts, and permissions.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.cli.tool.v1",
+    "universal.core.command.v1",
+    "universal.core.config.v1",
+    "universal.core.environment.v1",
+    "universal.core.permissions.v1",
+    "universal.core.test_run.v1",
+    "universal.core.artifact.v1"
+  ],
+  "domain_packs": ["cli-tools", "plugins", "workflow-automation"],
+  "required_fields": {
+    "cli_tool": ["schema", "id", "kind", "commands", "configuration", "outputs", "exit_codes"],
+    "command_surface": ["schema", "id", "kind", "commands", "inputs", "outputs", "exit_codes"],
+    "verification": ["tests", "fixtures", "structured_outputs"]
+  },
+  "allowed_values": {
+    "cli_tool.kind": ["cli_tool", "developer_tool", "automation_tool"]
+  },
+  "schemas": [],
+  "examples": [],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "breaking_command_changes_require_version_bump": true
+  },
+  "integration_points": [
+    {
+      "name": "commands",
+      "contracts": ["universal.cli.tool.v1", "universal.core.command.v1"],
+      "required": true,
+      "description": "Command names, arguments, flags, defaults, examples, and exit codes."
+    },
+    {
+      "name": "machine_output",
+      "contracts": ["universal.core.artifact.v1"],
+      "required": true,
+      "description": "Structured output modes, files, reports, and generated artifacts."
+    },
+    {
+      "name": "automation_safety",
+      "contracts": ["universal.core.permissions.v1"],
+      "required": true,
+      "description": "Filesystem, network, secret, and destructive-operation permissions."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Commands declare inputs, outputs, side effects, and exit codes.",
+      "Configuration sources and precedence are explicit.",
+      "Machine-readable output does not mix with progress text.",
+      "Destructive or external side effects require declared permissions.",
+      "Examples or fixtures cover primary command paths."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile for CLIs and developer automation tools.",
+    "Prefer stable command and output surfaces over hidden conventions.",
+    "Report commands changed, structured outputs, and validation run."
+  ]
+}

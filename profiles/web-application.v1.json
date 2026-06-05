@@ -1,0 +1,77 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.web_application.v1",
+  "kind": "profile",
+  "title": "Web Application Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A browser or server-rendered application with routes, UI, forms, API clients, storage, auth, tests, and deployment surfaces.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.web.project.v1",
+    "universal.web.app_surface.v1",
+    "universal.web.route.v1",
+    "universal.web.form.v1",
+    "universal.web.api_client.v1",
+    "universal.web.browser_storage.v1",
+    "universal.web.test_surface.v1",
+    "universal.ui.design_system.v1",
+    "universal.ui.accessibility.v1",
+    "universal.app.auth_identity.v1",
+    "universal.app.user_session.v1",
+    "universal.app.cache_policy.v1"
+  ],
+  "domain_packs": ["web-apps", "ui-systems", "application-services", "api-services"],
+  "required_fields": {
+    "web_project": ["schema", "id", "kind", "contracts", "commands", "configuration", "build_outputs"],
+    "route": ["schema", "id", "kind", "path", "rendering", "auth", "data", "states"],
+    "form": ["schema", "id", "kind", "subject", "fields", "validation", "submission", "states"],
+    "test_surface": ["schema", "id", "kind", "subjects", "fixtures", "assertions", "artifacts"]
+  },
+  "allowed_values": {
+    "web_project.kind": ["web_project"],
+    "route.states": ["loading", "empty", "ready", "error", "unauthorized", "offline", "degraded"]
+  },
+  "schemas": [],
+  "examples": ["examples/web-project/project.json"],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "ui_changes_require_accessibility_review": true
+  },
+  "integration_points": [
+    {
+      "name": "routes",
+      "contracts": ["universal.web.route.v1", "universal.ui.screen.v1"],
+      "required": true,
+      "description": "Navigable application surfaces and visible states."
+    },
+    {
+      "name": "api_clients",
+      "contracts": ["universal.web.api_client.v1", "universal.core.api_surface.v1"],
+      "required": true,
+      "description": "Frontend-to-service integration boundaries."
+    },
+    {
+      "name": "verification",
+      "contracts": ["universal.web.test_surface.v1", "universal.ui.accessibility.v1"],
+      "required": true,
+      "description": "Regression, accessibility, and user-flow checks."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Routes declare auth, data dependencies, states, and user-visible actions.",
+      "Forms declare validation, submission, error, and side-effect behavior.",
+      "API clients declare schemas, cache behavior, auth, retries, and errors.",
+      "Browser storage declares ownership, retention, migration, and reset behavior.",
+      "Tests or fixtures cover the primary routes or flows touched by a change."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile for web app work that crosses UI, routes, data, and auth.",
+    "Keep framework choices tool-specific but preserve route, state, API, and test descriptors.",
+    "Report affected routes, forms, storage, API clients, and checks."
+  ]
+}

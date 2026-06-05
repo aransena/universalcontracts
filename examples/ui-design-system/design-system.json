@@ -1,0 +1,47 @@
+{
+  "schema": "universal.ui.design_system.v1",
+  "id": "example_design_system",
+  "kind": "ui_design_system",
+  "producer": {
+    "project": "example-ui",
+    "version": "0.1.0"
+  },
+  "contracts": [
+    "universal.ui.design_system.v1",
+    "universal.ui.component.v1",
+    "universal.ui.accessibility.v1"
+  ],
+  "tokens": {
+    "colors": "tokens/colors.json",
+    "typography": "tokens/typography.json",
+    "spacing": "tokens/spacing.json"
+  },
+  "components": {
+    "button": "components/button.json",
+    "dialog": "components/dialog.json"
+  },
+  "assets": {
+    "icons": "assets/icons",
+    "fonts": "assets/fonts"
+  },
+  "themes": [
+    {
+      "id": "default",
+      "mode": "light"
+    },
+    {
+      "id": "default_dark",
+      "mode": "dark"
+    }
+  ],
+  "accessibility": {
+    "focus_visible": true,
+    "reduced_motion_supported": true,
+    "contrast_policy": "semantic_tokens_must_declare_usage"
+  },
+  "usage": {
+    "supported_platforms": ["web"],
+    "component_catalog": "components/index.json"
+  }
+}
+

@@ -44,9 +44,10 @@ use `records.jsonl`; binary indexed streams use `payloads.bin` and `index.jsonl`
 - `events.jsonl`: session-level events that are not owned by one stream.
 - `derived/`: derived artifacts.
 
-## Manifest Requirements
+## Required Shape
 
-The root manifest must include:
+A recording bundle root must expose `manifest.json` and `lifecycle.json`. The
+root manifest must include:
 
 - `schema`: `universal.capture.recording_bundle.v1`.
 - `id`: session ID.
@@ -57,6 +58,12 @@ The root manifest must include:
 - `clock`: timestamp policy.
 - `streams`: map from stream ID to `streams/<stream-id>/stream.json`.
 - `derived`: map from artifact ID to `derived/<artifact-id>/artifact.json`.
+
+## Manifest Requirements
+
+The root manifest is the portable spine of the bundle. It declares stream
+descriptors, derived artifact descriptors, lifecycle, clock policy, producer,
+contract IDs, and optional user metadata or event files.
 
 ## Lifecycle Requirements
 
@@ -94,6 +101,12 @@ Each stream must have:
   - `payloads.bin`
   - `index.jsonl`
 
+## Extension Points
+
+Projects may add stream-specific metadata, local message schemas, annotation
+streams, device descriptors, calibration references, derived artifacts, or
+project-local profiles.
+
 ## Invariants
 
 - A closed bundle is replayable from its manifest and stream descriptors alone.
@@ -102,10 +115,17 @@ Each stream must have:
 - Producer-owned manifests are not user-editable documents.
 - User edits belong in `metadata.json` or domain-specific annotation streams.
 
+## Validation Rules
+
+- Load the manifest and lifecycle files.
+- Resolve manifest paths without escaping the bundle root.
+- Validate stream descriptors and primary record formats.
+- Check JSONL rows, binary payload indexes, final stats, and lifecycle
+  consistency.
+
 ## Agent Implementation Notes
 
 When implementing a recorder, write the root and stream descriptors during
 `prepare()`, update lifecycle timestamps at each transition, and rewrite final
 stats during `closing`. Prefer a small validator that checks paths, JSON shape,
 record counts, binary offsets, and lifecycle consistency.
-

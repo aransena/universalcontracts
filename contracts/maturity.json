@@ -1,0 +1,228 @@
+{
+  "schema": "universal.contract_maturity.v1",
+  "minimum_maturity": "candidate",
+  "default_maturity": "candidate",
+  "default_candidate_since": "2026-06-05",
+  "default_maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+  "default_promotion_basis": ["standard_sections", "shared_conventions", "catalog_lint"],
+  "contracts": {
+    "universal.agent.tool_surface.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Representative example plus agent-tool guide coverage.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.capture.payload_index.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Concrete capture fixture validates the binary payload index pattern.",
+      "promotion_basis": ["example", "recipe", "catalog_lint"]
+    },
+    "universal.capture.recording_bundle.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Complete example bundle demonstrates manifest, lifecycle, streams, events, and derived artifacts.",
+      "promotion_basis": ["example", "recipe", "catalog_lint"]
+    },
+    "universal.core.artifact.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Used by capture examples and core handoff patterns.",
+      "promotion_basis": ["example", "standard_sections", "catalog_lint"]
+    },
+    "universal.core.command.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Common agent adoption surface with examples across web, edge, and tool contracts.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.core.config.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Common project setup surface with web project example coverage.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.core.environment.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Common runtime discovery surface with web and edge examples.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.core.lifecycle.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Used by capture and ML examples with stable lifecycle semantics.",
+      "promotion_basis": ["example", "standard_sections", "catalog_lint"]
+    },
+    "universal.core.manifest.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Source-of-truth descriptor pattern demonstrated by the capture bundle fixture.",
+      "promotion_basis": ["example", "standard_sections", "catalog_lint"]
+    },
+    "universal.core.permissions.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Common safety boundary for agent tool adoption.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.core.project.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Foundational agent-facing repository contract with standardized sections.",
+      "promotion_basis": ["standard_sections", "guide", "catalog_lint"]
+    },
+    "universal.core.provenance.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Common lineage surface with data and ML examples.",
+      "promotion_basis": ["example", "recipe", "catalog_lint"]
+    },
+    "universal.core.stream.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Used by the capture fixture with JSONL and binary indexed streams.",
+      "promotion_basis": ["example", "standard_sections", "catalog_lint"]
+    },
+    "universal.data.dataset.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Representative data-sharing example demonstrates files, fields, sources, privacy, and license signals.",
+      "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
+    },
+    "universal.data.pipeline_run.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Dataset example declares pipeline-run participation for lineage.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.edge.board_target.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Edge firmware example depends on board target discovery.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.edge.edge_deployment.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "SBC deployment example demonstrates hardware, software, configuration, health, and rollback handoff.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.edge.firmware_image.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Edge firmware example declares firmware image outputs and compatibility.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.edge.firmware_project.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Representative firmware project example covers source, build, target, runtime, configuration, tests, and outputs.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.edge.sbc_hardware.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "SBC deployment example declares hardware profile participation.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.edge.sbc_image.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "SBC deployment example declares image compatibility and deployment handoff.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.edge.sbc_service.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "SBC deployment example declares edge service handoff points.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.ml.model_artifact.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "ML training example links training output to model artifact semantics.",
+      "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
+    },
+    "universal.ml.training_run.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Representative training-run example covers inputs, lifecycle, parameters, outputs, and metrics.",
+      "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
+    },
+    "universal.ops.service_health.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Edge deployment example declares health handoff.",
+      "promotion_basis": ["example", "recipe", "catalog_lint"]
+    },
+    "universal.ui.accessibility.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "UI design-system example declares accessibility expectations.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.ui.component.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "UI design-system example declares component catalog participation.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "universal.ui.design_system.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Representative design-system example covers tokens, components, assets, themes, and accessibility.",
+      "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
+    },
+    "universal.web.project.v1": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Representative web project example covers framework family, package, commands, configuration, outputs, and deployment target.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    }
+  },
+  "domain_packs": {
+    "agent-systems": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Tool surface has representative example and adoption guide coverage.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "capture": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Recording bundle fixture exercises core capture handoffs.",
+      "promotion_basis": ["example", "recipe", "catalog_lint"]
+    },
+    "data-pipelines": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Dataset example and data-sharing guide cover the initial portable spine.",
+      "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
+    },
+    "edge-devices": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Firmware and SBC examples cover the initial edge adoption paths.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    },
+    "ml-systems": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Training-run example and ML guide cover the first ML adoption path.",
+      "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
+    },
+    "ui-systems": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Design-system example and UI change-control recipe cover the first UI adoption path.",
+      "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
+    },
+    "web-apps": {
+      "candidate_since": "2026-06-05",
+      "maturity": "candidate",
+      "maturity_reason": "Web project example and web app guide cover the first web adoption path.",
+      "promotion_basis": ["example", "guide", "catalog_lint"]
+    }
+  }
+}

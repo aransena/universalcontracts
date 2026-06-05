@@ -1,0 +1,72 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.ml_serving_module.v1",
+  "kind": "profile",
+  "title": "ML Serving Module Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A module that packages, evaluates, serves, or integrates machine learning models through batch or live inference.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.ml.model_artifact.v1",
+    "universal.ml.evaluation_report.v1",
+    "universal.ml.inference_service.v1",
+    "universal.core.api_surface.v1",
+    "universal.core.environment.v1",
+    "universal.core.observability.v1",
+    "universal.ops.deployment.v1",
+    "universal.ops.service_health.v1"
+  ],
+  "domain_packs": ["ml-systems", "api-services", "deployment-ops", "data-pipelines"],
+  "required_fields": {
+    "model_artifact": ["schema", "id", "kind", "created_at", "producer", "files", "runtime", "sources", "status"],
+    "inference_service": ["schema", "id", "kind", "model", "inputs", "outputs", "runtime", "limits"],
+    "evaluation": ["subject", "metrics", "datasets", "status"]
+  },
+  "allowed_values": {
+    "model_artifact.kind": ["model_artifact"],
+    "inference_service.kind": ["inference_service"]
+  },
+  "schemas": [],
+  "examples": ["examples/ml-training-run/training-run.json"],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "model_io_changes_require_consumer_review": true
+  },
+  "integration_points": [
+    {
+      "name": "model_package",
+      "contracts": ["universal.ml.model_artifact.v1"],
+      "required": true,
+      "description": "Model files, runtime assumptions, provenance, and status."
+    },
+    {
+      "name": "inference_api",
+      "contracts": ["universal.ml.inference_service.v1", "universal.core.api_surface.v1"],
+      "required": true,
+      "description": "Input, output, runtime, limits, and error semantics."
+    },
+    {
+      "name": "model_quality",
+      "contracts": ["universal.ml.evaluation_report.v1"],
+      "required": true,
+      "description": "Evaluation metrics, datasets, scope, and known limitations."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Model artifact declares files, runtime, provenance, and source data.",
+      "Inference input and output schemas are explicit.",
+      "Evaluation report declares metrics, datasets, scope, and status.",
+      "Deployment health and rollback behavior are discoverable.",
+      "Model limitations or unsafe uses are documented."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile for model-serving modules and model-consuming services.",
+    "Keep model IO, runtime, and evaluation surfaces explicit.",
+    "Report model artifact, inference surface, evaluation, and deployment health."
+  ]
+}

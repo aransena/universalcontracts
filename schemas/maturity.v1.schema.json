@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universal-contracts.dev/schemas/maturity.v1.schema.json",
+  "title": "Universal Contracts Maturity Metadata v1",
+  "type": "object",
+  "required": ["schema", "minimum_maturity", "default_maturity", "contracts", "domain_packs"],
+  "properties": {
+    "schema": { "const": "universal.contract_maturity.v1" },
+    "minimum_maturity": { "enum": ["draft", "candidate", "stable", "deprecated"] },
+    "default_maturity": { "enum": ["draft", "candidate", "stable", "deprecated"] },
+    "default_maturity_reason": { "type": "string" },
+    "default_candidate_since": { "type": "string" },
+    "default_promotion_basis": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "contracts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["maturity", "maturity_reason", "promotion_basis"],
+        "properties": {
+          "maturity": { "enum": ["draft", "candidate", "stable", "deprecated"] },
+          "maturity_reason": { "type": "string" },
+          "candidate_since": { "type": "string" },
+          "promotion_basis": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "replacement": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "domain_packs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["maturity", "maturity_reason", "promotion_basis"],
+        "properties": {
+          "maturity": { "enum": ["draft", "candidate", "stable", "deprecated"] },
+          "maturity_reason": { "type": "string" },
+          "candidate_since": { "type": "string" },
+          "promotion_basis": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "replacement": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

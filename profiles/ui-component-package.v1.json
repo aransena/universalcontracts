@@ -1,0 +1,70 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.ui_component_package.v1",
+  "kind": "profile",
+  "title": "UI Component Package Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A reusable UI component package with tokens, components, examples, accessibility, visual checks, and integration surfaces.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.ui.design_system.v1",
+    "universal.ui.component.v1",
+    "universal.ui.accessibility.v1",
+    "universal.ui.visual_regression.v1",
+    "universal.core.command.v1",
+    "universal.core.artifact.v1",
+    "universal.core.test_run.v1"
+  ],
+  "domain_packs": ["ui-systems", "web-apps", "media-assets"],
+  "required_fields": {
+    "package_descriptor": ["schema", "id", "kind", "contracts", "commands", "artifacts"],
+    "component": ["schema", "id", "kind", "props", "variants", "states", "events", "accessibility"],
+    "verification": ["accessibility", "visual_regression", "test_run"]
+  },
+  "allowed_values": {
+    "package_descriptor.kind": ["ui_component_package", "design_system_package"]
+  },
+  "schemas": [],
+  "examples": ["examples/ui-design-system/design-system.json"],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "breaking_component_changes_require_migration_notes": true
+  },
+  "integration_points": [
+    {
+      "name": "component_api",
+      "contracts": ["universal.ui.component.v1"],
+      "required": true,
+      "description": "Props, variants, states, events, slots, and examples."
+    },
+    {
+      "name": "accessibility",
+      "contracts": ["universal.ui.accessibility.v1"],
+      "required": true,
+      "description": "Keyboard, focus, semantics, contrast, announcements, and motion constraints."
+    },
+    {
+      "name": "visual_verification",
+      "contracts": ["universal.ui.visual_regression.v1"],
+      "required": true,
+      "description": "Baselines, fixtures, states, tolerances, and artifacts."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Components declare props, variants, states, events, accessibility, and examples.",
+      "Design tokens and assets are discoverable.",
+      "Breaking visual or API changes include migration notes.",
+      "Accessibility expectations are represented as testable constraints.",
+      "Build and validation commands are declared."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile for reusable component libraries and design systems.",
+    "Keep implementation framework-specific, but keep component API and states portable.",
+    "Report changed components, variants, accessibility expectations, and visual checks."
+  ]
+}

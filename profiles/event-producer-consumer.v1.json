@@ -1,0 +1,71 @@
+{
+  "schema": "universal.profile.v1",
+  "id": "universal.profile.event_producer_consumer.v1",
+  "kind": "profile",
+  "title": "Event Producer Consumer Profile v1",
+  "profile_type": "integration_pattern",
+  "summary": "A module that publishes, consumes, replays, or transforms events through queues, topics, webhooks, change streams, or realtime transports.",
+  "maturity": "candidate",
+  "candidate_since": "2026-06-05",
+  "base_contracts": [
+    "universal.workflow.queue.v1",
+    "universal.api.webhook.v1",
+    "universal.realtime.session.v1",
+    "universal.db.change_stream.v1",
+    "universal.db.transaction_boundary.v1",
+    "universal.core.stream.v1",
+    "universal.core.observability.v1",
+    "universal.core.permissions.v1"
+  ],
+  "domain_packs": ["workflow-automation", "api-services", "realtime-systems", "databases-storage"],
+  "required_fields": {
+    "event_surface": ["schema", "id", "kind", "transport", "messages", "delivery"],
+    "message": ["schema", "id", "kind", "fields", "timestamps", "status"],
+    "operations": ["observability", "permissions", "lifecycle"]
+  },
+  "allowed_values": {
+    "delivery": ["at_least_once", "at_most_once", "exactly_once", "best_effort"]
+  },
+  "schemas": [],
+  "examples": [],
+  "compatibility": {
+    "requires_candidate_contracts": true,
+    "message_schema_changes_require_consumer_review": true
+  },
+  "integration_points": [
+    {
+      "name": "message_schema",
+      "contracts": ["universal.core.stream.v1", "universal.db.change_stream.v1"],
+      "required": true,
+      "description": "Event payload shape, keys, timestamps, and versioning."
+    },
+    {
+      "name": "delivery",
+      "contracts": ["universal.workflow.queue.v1", "universal.api.webhook.v1"],
+      "required": true,
+      "description": "Retry, dedupe, ordering, and dead-letter behavior."
+    },
+    {
+      "name": "consumer_operations",
+      "contracts": ["universal.core.observability.v1", "universal.core.lifecycle.v1"],
+      "required": true,
+      "description": "Lag, replay, checkpoints, health, and diagnostics."
+    }
+  ],
+  "conformance": {
+    "minimum_level": "interoperable",
+    "levels": ["reference", "interoperable", "strict"],
+    "checks": [
+      "Message schemas declare keys, versions, timestamps, and ordering semantics.",
+      "Delivery behavior declares retry, dedupe, and dead-letter semantics.",
+      "Producers and consumers declare ownership and compatibility expectations.",
+      "Replay or non-replay behavior is explicit.",
+      "Observability exposes failure, lag, and processing diagnostics."
+    ]
+  },
+  "agent_guidance": [
+    "Use this profile for event-driven modules, webhooks, queues, CDC, and realtime messages.",
+    "Do not change message shape without compatibility notes.",
+    "Report producers, consumers, delivery semantics, and replay support."
+  ]
+}

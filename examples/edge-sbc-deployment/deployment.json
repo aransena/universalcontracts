@@ -1,0 +1,46 @@
+{
+  "schema": "universal.edge.edge_deployment.v1",
+  "id": "example_gallery_edge_node_01",
+  "kind": "edge_deployment",
+  "created_at": "2026-05-22T12:00:00Z",
+  "contracts": [
+    "universal.edge.edge_deployment.v1",
+    "universal.edge.sbc_image.v1",
+    "universal.edge.sbc_service.v1",
+    "universal.edge.sbc_hardware.v1",
+    "universal.ops.service_health.v1"
+  ],
+  "target": {
+    "device": "edge-node-01",
+    "site": "gallery-lab",
+    "environment": "field_test"
+  },
+  "software": {
+    "sbc_image": "sbc-image.json",
+    "services": {
+      "telemetry_agent": "services/telemetry-agent.json",
+      "local_dashboard": "services/local-dashboard.json"
+    }
+  },
+  "hardware": {
+    "board": "hardware/board-target.json",
+    "peripherals": "hardware/sbc-hardware.json",
+    "calibration": "hardware/calibration.json"
+  },
+  "configuration": {
+    "profile": "config/field-test.json",
+    "secrets": ["EDGE_NODE_CERT"]
+  },
+  "connectivity": {
+    "network": "ethernet_or_wifi",
+    "offline_behavior": "store_and_forward"
+  },
+  "health": {
+    "latest": "health/latest.json"
+  },
+  "rollback": {
+    "previous_deployment": "example_gallery_edge_node_01_previous",
+    "recovery": "recovery/factory-reset.md"
+  }
+}
+

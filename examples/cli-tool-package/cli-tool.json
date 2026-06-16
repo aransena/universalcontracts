@@ -1,0 +1,39 @@
+{
+  "schema": "universal.cli.tool.v1",
+  "id": "example_contract_lint_cli",
+  "kind": "cli_tool",
+  "created_at": "2026-06-05T12:00:00Z",
+  "producer": {
+    "project": "example-contract-tools",
+    "version": "0.1.0"
+  },
+  "contracts": [
+    "universal.cli.tool.v1",
+    "universal.core.command.v1",
+    "universal.core.config.v1",
+    "universal.core.permissions.v1"
+  ],
+  "profile": "universal.profile.cli_tool_package.v1",
+  "commands": {
+    "lint": {
+      "arguments": ["path"],
+      "outputs": ["report"],
+      "exit_codes": [
+        {
+          "code": 0,
+          "meaning": "no_errors"
+        },
+        {
+          "code": 1,
+          "meaning": "errors_found"
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "environment_variables": []
+  },
+  "permissions": {
+    "filesystem": ["read_workspace"]
+  }
+}

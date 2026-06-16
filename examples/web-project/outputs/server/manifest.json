@@ -1,0 +1,6 @@
+{
+  "schema": "example.server_bundle_manifest.v1",
+  "id": "example_web_server_bundle",
+  "kind": "server_bundle",
+  "entrypoint": "server.js"
+}

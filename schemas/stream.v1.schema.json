@@ -3,7 +3,7 @@
   "$id": "https://universal-contracts.dev/schemas/stream.v1.schema.json",
   "title": "Universal Stream v1",
   "type": "object",
-  "required": ["schema", "id", "kind", "record_format", "files", "timestamps", "stats"],
+  "required": ["schema", "id", "kind", "record_format", "message_schema", "files", "timestamps", "stats"],
   "properties": {
     "schema": { "const": "universal.core.stream.v1" },
     "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
@@ -57,4 +57,3 @@
   },
   "additionalProperties": true
 }
-

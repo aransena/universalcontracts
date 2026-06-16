@@ -1,0 +1,13 @@
+{
+  "schema": "universal.db.transaction_boundary.v1",
+  "id": "customer_account_transactions",
+  "kind": "transaction_boundary",
+  "subject": "customer_accounts",
+  "transactions": {
+    "create_customer_account": {
+      "isolation": "read_committed",
+      "writes": ["customer_accounts"],
+      "idempotency": "idempotency_key"
+    }
+  }
+}

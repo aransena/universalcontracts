@@ -9,12 +9,9 @@
 
 ## Examples
 
-- Add a complete `service_module` example.
-- Expand the `database_backed_module` example with schema, query surface, access
-  policy, transaction boundary, migration, and seed data descriptors.
-- Add an `event_producer_consumer` example.
-- Add an `integration_connector` example.
-- Add a `file_processing_pipeline` example.
+- Broaden the initial profile examples into richer multi-file fixtures where the
+  profile needs more than one descriptor to demonstrate real project adoption.
+- Add negative fixtures for validator development.
 
 ## Profile Validators
 

@@ -1,0 +1,47 @@
+{
+  "schema": "universal.app.integration_connector.v1",
+  "id": "example_crm_connector",
+  "kind": "integration_connector",
+  "created_at": "2026-06-05T12:00:00Z",
+  "producer": {
+    "project": "example-crm-sync",
+    "version": "0.1.0"
+  },
+  "contracts": [
+    "universal.app.integration_connector.v1",
+    "universal.app.auth_identity.v1",
+    "universal.api.webhook.v1",
+    "universal.api.background_job.v1",
+    "universal.db.data_model.v1",
+    "universal.core.observability.v1",
+    "universal.core.permissions.v1"
+  ],
+  "profile": "universal.profile.integration_connector.v1",
+  "target": {
+    "system": "example_crm",
+    "environment": "sandbox"
+  },
+  "auth": {
+    "kind": "oauth2",
+    "secret_refs": ["CRM_CLIENT_SECRET"]
+  },
+  "endpoints": {
+    "contacts": "/v1/contacts"
+  },
+  "mappings": {
+    "contact": {
+      "local_model": "customer_account",
+      "external_schema": "crm_contact",
+      "source_of_truth": "external",
+      "conflicts": "external_wins"
+    }
+  },
+  "delivery": {
+    "retries": "exponential_backoff",
+    "idempotency": "external_id"
+  },
+  "observability": {
+    "health": "sync_health",
+    "support": "sync_diagnostics"
+  }
+}

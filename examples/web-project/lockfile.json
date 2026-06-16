@@ -1,0 +1,6 @@
+{
+  "schema": "example.lockfile.v1",
+  "id": "example_web_lockfile",
+  "kind": "dependency_lockfile",
+  "packages": []
+}

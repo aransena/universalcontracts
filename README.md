@@ -125,10 +125,10 @@ Cross-cutting guidance:
 Machine-readable reference:
 
 - `contracts/catalog.json`: generated catalog of contract IDs, paths, maturity,
-  inferred core composition, related domain packs, example paths, and profiles.
+  explicit core composition, related domain packs, example paths, and profiles.
 - `contracts/maturity.json`: reviewed maturity metadata used to generate the
-  catalog. The published catalog currently uses `candidate` as its minimum
-  maturity.
+  catalog. Contracts without explicit promotion metadata remain `draft` by
+  default.
 - `profiles/*.v1.json`: machine-readable integration profiles for common module
   types such as service modules, database-backed modules, web applications,
   event producers/consumers, UI packages, CLI tools, data exchange modules, ML

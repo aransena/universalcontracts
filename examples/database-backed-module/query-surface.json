@@ -1,0 +1,13 @@
+{
+  "schema": "universal.db.query_surface.v1",
+  "id": "customer_account_queries",
+  "kind": "query_surface",
+  "subject": "customer_accounts",
+  "queries": {
+    "get_customer_account": {
+      "parameters": ["tenant_id", "id"],
+      "results": "customer_account",
+      "permissions": ["billing.accounts.read"]
+    }
+  }
+}

@@ -19,7 +19,7 @@
   },
   "package": {
     "dependency_manifest": "package.json",
-    "lockfile": "lockfile"
+    "lockfile": "lockfile.json"
   },
   "commands": {
     "install": "project install",
@@ -38,8 +38,8 @@
     ]
   },
   "build_outputs": {
-    "static_assets": "dist/assets",
-    "server_bundle": "dist/server"
+    "static_assets": "outputs/assets",
+    "server_bundle": "outputs/server"
   },
   "deployment_targets": [
     {
@@ -48,4 +48,3 @@
     }
   ]
 }
-

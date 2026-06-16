@@ -51,6 +51,7 @@ NANOSECOND_SUFFIXES = (
     "_sim_ns",
     "_duration_ns",
 )
+CAPTURE_BUNDLE_ROOT = ROOT / "examples" / "capture-recording-bundle"
 
 
 def contract_files() -> list[Path]:
@@ -173,6 +174,222 @@ def validate_examples(errors: list[str]) -> None:
             walk_example_json(path, data, f"line {line_no}", errors)
 
 
+def check_relative_path(
+    base: Path,
+    rel_path: object,
+    label: str,
+    errors: list[str],
+    allowed_root: Path | None = None,
+) -> Path | None:
+    if not isinstance(rel_path, str):
+        errors.append(f"{label}: path must be a string")
+        return None
+    if Path(rel_path).is_absolute():
+        errors.append(f"{label}: path must be relative: {rel_path}")
+        return None
+    target = (base / rel_path).resolve()
+    root = (allowed_root or base).resolve()
+    try:
+        target.relative_to(root)
+    except ValueError:
+        errors.append(f"{label}: path escapes example root: {rel_path}")
+        return None
+    if not target.exists():
+        errors.append(f"{label}: referenced path does not exist: {rel_path}")
+    return target
+
+
+def validate_declared_example_paths(errors: list[str]) -> None:
+    path = ROOT / "examples" / "data-pipeline" / "dataset.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        for role, rel_path in data.get("files", {}).items():
+            check_relative_path(path.parent, rel_path, f"{path.relative_to(ROOT)}:files.{role}", errors)
+
+    path = ROOT / "examples" / "database-backed-module" / "data-model.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        for role, rel_path in data.get("storage", {}).items():
+            check_relative_path(path.parent, rel_path, f"{path.relative_to(ROOT)}:storage.{role}", errors)
+        for role, rel_path in data.get("interfaces", {}).items():
+            check_relative_path(path.parent, rel_path, f"{path.relative_to(ROOT)}:interfaces.{role}", errors)
+        fixtures = data.get("validation", {}).get("fixtures", [])
+        if isinstance(fixtures, list):
+            for index, rel_path in enumerate(fixtures):
+                check_relative_path(path.parent, rel_path, f"{path.relative_to(ROOT)}:validation.fixtures[{index}]", errors)
+
+    path = ROOT / "examples" / "ml-training-run" / "training-run.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        check_relative_path(path.parent, data.get("lifecycle"), f"{path.relative_to(ROOT)}:lifecycle", errors)
+        inputs = data.get("inputs", {})
+        if isinstance(inputs, dict) and "configuration" in inputs:
+            check_relative_path(path.parent, inputs["configuration"], f"{path.relative_to(ROOT)}:inputs.configuration", errors)
+        outputs = data.get("outputs", {})
+        if isinstance(outputs, dict):
+            for role, rel_path in outputs.items():
+                check_relative_path(path.parent, rel_path, f"{path.relative_to(ROOT)}:outputs.{role}", errors)
+
+    path = ROOT / "examples" / "web-project" / "project.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        for role, rel_path in data.get("package", {}).items():
+            check_relative_path(path.parent, rel_path, f"{path.relative_to(ROOT)}:package.{role}", errors)
+        for role, rel_path in data.get("build_outputs", {}).items():
+            check_relative_path(path.parent, rel_path, f"{path.relative_to(ROOT)}:build_outputs.{role}", errors)
+
+    artifact_schemas = {"universal.core.artifact.v1", "universal.ml.model_artifact.v1"}
+    for path in sorted((ROOT / "examples").glob("**/*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if data.get("schema") not in artifact_schemas:
+            continue
+        files = data.get("files", {})
+        if isinstance(files, dict):
+            for role, rel_path in files.items():
+                check_relative_path(path.parent, rel_path, f"{path.relative_to(ROOT)}:files.{role}", errors)
+        sources = data.get("sources", [])
+        if isinstance(sources, list):
+            for index, source in enumerate(sources):
+                if isinstance(source, dict) and isinstance(source.get("ref"), str):
+                    check_relative_path(
+                        path.parent,
+                        source["ref"],
+                        f"{path.relative_to(ROOT)}:sources[{index}].ref",
+                        errors,
+                        ROOT / "examples",
+                    )
+
+
+def read_json_object(path: Path, label: str, errors: list[str]) -> dict[str, object] | None:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        errors.append(f"{label}: invalid JSON: {exc}")
+        return None
+    if not isinstance(data, dict):
+        errors.append(f"{label}: JSON value must be an object")
+        return None
+    return data
+
+
+def validate_jsonl_objects(path: Path, errors: list[str]) -> int:
+    count = 0
+    for line_no, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        count += 1
+        try:
+            data = json.loads(line)
+        except json.JSONDecodeError as exc:
+            errors.append(f"{path.relative_to(ROOT)}:{line_no}: invalid JSONL: {exc}")
+            continue
+        if not isinstance(data, dict):
+            errors.append(f"{path.relative_to(ROOT)}:{line_no}: JSONL row must be an object")
+    return count
+
+
+def validate_capture_bundle_fixture(errors: list[str]) -> None:
+    if not CAPTURE_BUNDLE_ROOT.exists():
+        return
+    manifest_path = CAPTURE_BUNDLE_ROOT / "manifest.json"
+    manifest = read_json_object(manifest_path, str(manifest_path.relative_to(ROOT)), errors)
+    if not manifest:
+        return
+
+    for field in ("lifecycle", "user_metadata_path", "session_events"):
+        if field in manifest:
+            check_relative_path(CAPTURE_BUNDLE_ROOT, manifest[field], f"{manifest_path.relative_to(ROOT)}:{field}", errors)
+
+    for field in ("streams", "derived"):
+        entries = manifest.get(field, {})
+        if not isinstance(entries, dict):
+            errors.append(f"{manifest_path.relative_to(ROOT)}:{field}: must be an object")
+            continue
+        for name, rel_path in entries.items():
+            check_relative_path(CAPTURE_BUNDLE_ROOT, rel_path, f"{manifest_path.relative_to(ROOT)}:{field}.{name}", errors)
+
+    streams = manifest.get("streams", {})
+    if not isinstance(streams, dict):
+        return
+    for stream_id, rel_path in streams.items():
+        stream_path = check_relative_path(
+            CAPTURE_BUNDLE_ROOT,
+            rel_path,
+            f"{manifest_path.relative_to(ROOT)}:streams.{stream_id}",
+            errors,
+        )
+        if stream_path is None or not stream_path.exists():
+            continue
+        stream = read_json_object(stream_path, str(stream_path.relative_to(ROOT)), errors)
+        if not stream:
+            continue
+        if stream.get("id") != stream_id:
+            errors.append(f"{stream_path.relative_to(ROOT)}: id does not match manifest key {stream_id!r}")
+        if stream_path.parent.name != stream.get("id"):
+            errors.append(f"{stream_path.relative_to(ROOT)}: stream directory must match stream id")
+
+        files = stream.get("files", {})
+        stats = stream.get("stats", {})
+        if not isinstance(files, dict):
+            errors.append(f"{stream_path.relative_to(ROOT)}: files must be an object")
+            continue
+        if not isinstance(stats, dict):
+            errors.append(f"{stream_path.relative_to(ROOT)}: stats must be an object")
+            continue
+
+        record_format = stream.get("record_format")
+        if record_format == "jsonl":
+            records_path = check_relative_path(stream_path.parent, files.get("records"), f"{stream_path.relative_to(ROOT)}:files.records", errors)
+            if records_path is None or not records_path.exists():
+                continue
+            record_count = validate_jsonl_objects(records_path, errors)
+            byte_count = records_path.stat().st_size
+            if stats.get("records") != record_count:
+                errors.append(f"{stream_path.relative_to(ROOT)}: stats.records {stats.get('records')!r} != JSONL rows {record_count}")
+            if stats.get("bytes") != byte_count:
+                errors.append(f"{stream_path.relative_to(ROOT)}: stats.bytes {stats.get('bytes')!r} != file bytes {byte_count}")
+        elif record_format == "binary_payloads_with_jsonl_index":
+            payloads_path = check_relative_path(stream_path.parent, files.get("payloads"), f"{stream_path.relative_to(ROOT)}:files.payloads", errors)
+            index_path = check_relative_path(stream_path.parent, files.get("index"), f"{stream_path.relative_to(ROOT)}:files.index", errors)
+            if (
+                payloads_path is None
+                or index_path is None
+                or not payloads_path.exists()
+                or not index_path.exists()
+            ):
+                continue
+            payload_size = payloads_path.stat().st_size
+            previous_end = 0
+            row_count = 0
+            for line_no, line in enumerate(index_path.read_text(encoding="utf-8").splitlines(), 1):
+                if not line.strip():
+                    continue
+                row_count += 1
+                try:
+                    row = json.loads(line)
+                except json.JSONDecodeError as exc:
+                    errors.append(f"{index_path.relative_to(ROOT)}:{line_no}: invalid JSONL: {exc}")
+                    continue
+                if not isinstance(row, dict):
+                    errors.append(f"{index_path.relative_to(ROOT)}:{line_no}: index row must be an object")
+                    continue
+                offset = row.get("offset")
+                size = row.get("size")
+                if not isinstance(offset, int) or not isinstance(size, int):
+                    errors.append(f"{index_path.relative_to(ROOT)}:{line_no}: offset and size must be integers")
+                    continue
+                end = offset + size
+                if offset < previous_end:
+                    errors.append(f"{index_path.relative_to(ROOT)}:{line_no}: payload offset is overlapping or nonmonotonic")
+                if end > payload_size:
+                    errors.append(f"{index_path.relative_to(ROOT)}:{line_no}: payload range exceeds payloads.bin size")
+                previous_end = end
+            if stats.get("records") != row_count:
+                errors.append(f"{stream_path.relative_to(ROOT)}: stats.records {stats.get('records')!r} != index rows {row_count}")
+            if stats.get("bytes") != payload_size:
+                errors.append(f"{stream_path.relative_to(ROOT)}: stats.bytes {stats.get('bytes')!r} != payload bytes {payload_size}")
+
+
 def validate_portable_field_name(path: Path, location: str, field: object, errors: list[str]) -> None:
     if not isinstance(field, str):
         errors.append(f"{path.relative_to(ROOT)}:{location}: field name must be a string")
@@ -285,6 +502,8 @@ def validate_profile_data(
     if not isinstance(examples, list) or not all(isinstance(item, str) for item in examples):
         errors.append(f"{rel_path}: examples must be a list of strings")
         examples = []
+    if maturity == "candidate" and not examples:
+        errors.append(f"{rel_path}: candidate profile must declare at least one example")
     for example in examples:
         if not (ROOT / example).exists():
             errors.append(f"{rel_path}: profile example does not exist: {example}")
@@ -340,6 +559,9 @@ def main() -> int:
             if not FIELD_NAME_RE.match(field):
                 errors.append(f"{rel_path}: portable field `{field}` is not snake_case")
 
+    known_ids = set(discovered)
+    core_ids = {contract_id for contract_id, path in discovered.items() if path.startswith("contracts/core/")}
+
     catalog = load_catalog()
     minimum_maturity = catalog.get("minimum_maturity", "draft")
     if minimum_maturity not in ALLOWED_MATURITY:
@@ -372,6 +594,13 @@ def main() -> int:
                 errors.append(f"contracts/catalog.json:{contract_id}: candidate contract missing maturity_reason")
             if not entry.get("candidate_since"):
                 errors.append(f"contracts/catalog.json:{contract_id}: candidate contract missing candidate_since")
+        composes_core = entry.get("composes_core", [])
+        if not isinstance(composes_core, list) or not all(isinstance(item, str) for item in composes_core):
+            errors.append(f"contracts/catalog.json:{contract_id}: composes_core must be a list of strings")
+        else:
+            for core_id in composes_core:
+                if core_id not in core_ids:
+                    errors.append(f"contracts/catalog.json:{contract_id}: composes_core references unknown core contract {core_id}")
         catalog_paths[contract_id] = path
         if discovered.get(contract_id) != path:
             errors.append(
@@ -406,7 +635,6 @@ def main() -> int:
             if not entry.get("candidate_since"):
                 errors.append(f"contracts/catalog.json:{domain}: candidate domain pack missing candidate_since")
 
-    known_ids = set(discovered)
     discovered_profiles: dict[str, str] = {}
     for path in profile_files():
         rel_path = str(path.relative_to(ROOT))
@@ -475,8 +703,16 @@ def main() -> int:
     for contract_id, entry in maturity_contracts.items():
         if contract_id not in known_ids:
             errors.append(f"contracts/maturity.json: unknown contract {contract_id}")
-        if isinstance(entry, dict) and entry.get("maturity") not in ALLOWED_MATURITY:
-            errors.append(f"contracts/maturity.json:{contract_id}: invalid maturity {entry.get('maturity')!r}")
+        if isinstance(entry, dict):
+            if entry.get("maturity") not in ALLOWED_MATURITY:
+                errors.append(f"contracts/maturity.json:{contract_id}: invalid maturity {entry.get('maturity')!r}")
+            composes_core = entry.get("composes_core", [])
+            if not isinstance(composes_core, list) or not all(isinstance(item, str) for item in composes_core):
+                errors.append(f"contracts/maturity.json:{contract_id}: composes_core must be a list of strings")
+            else:
+                for core_id in composes_core:
+                    if core_id not in core_ids:
+                        errors.append(f"contracts/maturity.json:{contract_id}: unknown core composition {core_id}")
 
     maturity_domains = maturity_metadata.get("domain_packs", {})
     if not isinstance(maturity_domains, dict):
@@ -489,6 +725,8 @@ def main() -> int:
             errors.append(f"contracts/maturity.json:{domain}: invalid maturity {entry.get('maturity')!r}")
 
     validate_examples(errors)
+    validate_declared_example_paths(errors)
+    validate_capture_bundle_fixture(errors)
 
     current_catalog = (ROOT / "contracts" / "catalog.json").read_text(encoding="utf-8")
     regenerated_catalog = generated_catalog_text()

@@ -1,12 +1,13 @@
 # Candidate Baseline
 
-The candidate baseline is the full published Universal Contracts catalog. Every
-listed contract is considered ready for early adopters. Breaking changes should
-be rare, but these contracts are not yet `stable`.
+The candidate baseline is the subset of the published Universal Contracts
+catalog considered ready for early adopters. The catalog may also include
+`draft` contracts for discovery and review; breaking changes should be expected
+for draft entries and rare for candidate entries.
 
-Candidate maturity is tracked in `contracts/maturity.json` and reflected in the
-generated `contracts/catalog.json`. Machine-readable profiles are also included
-in the catalog and currently use `candidate` maturity.
+Candidate maturity is tracked explicitly in `contracts/maturity.json` and
+reflected in the generated `contracts/catalog.json`. Contracts without explicit
+promotion metadata remain `draft` by default.
 
 ## Core Candidate Contracts
 
@@ -20,9 +21,6 @@ in the catalog and currently use `candidate` maturity.
 - `universal.core.environment.v1`
 - `universal.core.permissions.v1`
 - `universal.core.provenance.v1`
-- `universal.core.api_surface.v1`
-- `universal.core.observability.v1`
-- `universal.core.test_run.v1`
 
 ## Domain Candidate Contracts
 
@@ -33,13 +31,6 @@ in the catalog and currently use `candidate` maturity.
 - `universal.ml.training_run.v1`
 - `universal.ml.model_artifact.v1`
 - `universal.web.project.v1`
-- `universal.app.auth_identity.v1`
-- `universal.app.access_control.v1`
-- `universal.app.cache_policy.v1`
-- `universal.app.search_surface.v1`
-- `universal.db.data_model.v1`
-- `universal.db.query_surface.v1`
-- `universal.db.data_access_policy.v1`
 - `universal.ui.design_system.v1`
 - `universal.ui.component.v1`
 - `universal.ui.accessibility.v1`
@@ -53,8 +44,8 @@ in the catalog and currently use `candidate` maturity.
 - `universal.ops.service_health.v1`
 - `universal.agent.tool_surface.v1`
 
-All other contracts in `contracts/catalog.json` are also `candidate`; the list
-above highlights common starting points for agent-driven projects.
+Other contracts in `contracts/catalog.json` may remain `draft`; use their
+maturity field instead of assuming catalog inclusion implies candidate status.
 
 ## Candidate Profiles
 
@@ -73,10 +64,8 @@ above highlights common starting points for agent-driven projects.
 ## Candidate Domain Packs
 
 - `agent-systems`
-- `application-services`
 - `capture`
 - `data-pipelines`
-- `databases-storage`
 - `edge-devices`
 - `ml-systems`
 - `ui-systems`

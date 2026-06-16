@@ -1,0 +1,11 @@
+{
+  "schema": "example.training_configuration.v1",
+  "id": "run_001_configuration",
+  "kind": "training_configuration",
+  "dataset": "../data-pipeline/dataset.json",
+  "parameters": {
+    "epochs": 5,
+    "batch_size": 32,
+    "seed": 1234
+  }
+}

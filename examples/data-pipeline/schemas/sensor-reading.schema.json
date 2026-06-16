@@ -1,0 +1,17 @@
+{
+  "schema": "example.record_schema.v1",
+  "id": "sensor_reading_schema",
+  "kind": "record_schema",
+  "fields": {
+    "timestamp_unix_ns": {
+      "type": "integer",
+      "units": "nanoseconds",
+      "required": true
+    },
+    "temperature_c": {
+      "type": "number",
+      "units": "celsius",
+      "required": true
+    }
+  }
+}

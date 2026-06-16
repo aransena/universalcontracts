@@ -1,0 +1,58 @@
+{
+  "schema": "universal.api.service_surface.v1",
+  "id": "example_billing_service",
+  "kind": "service_module",
+  "created_at": "2026-06-05T12:00:00Z",
+  "producer": {
+    "project": "example-billing-service",
+    "version": "0.1.0"
+  },
+  "contracts": [
+    "universal.core.project.v1",
+    "universal.core.command.v1",
+    "universal.core.config.v1",
+    "universal.core.environment.v1",
+    "universal.core.api_surface.v1",
+    "universal.core.observability.v1",
+    "universal.core.permissions.v1",
+    "universal.api.service_surface.v1",
+    "universal.api.background_job.v1",
+    "universal.ops.deployment.v1",
+    "universal.ops.service_health.v1"
+  ],
+  "profile": "universal.profile.service_module.v1",
+  "commands": {
+    "run": "billing-service run",
+    "test": "billing-service test",
+    "validate": "billing-service validate"
+  },
+  "configuration": {
+    "environment_variables": [
+      {
+        "name": "DATABASE_URL",
+        "required": true,
+        "secret": true
+      }
+    ]
+  },
+  "environment": {
+    "runtime": "python",
+    "services": ["postgresql"]
+  },
+  "auth": {
+    "kind": "service_token"
+  },
+  "endpoints": {
+    "get_account": {
+      "method": "GET",
+      "path": "/accounts/{account_id}"
+    }
+  },
+  "runtime": {
+    "process": "web"
+  },
+  "observability": {
+    "health": "/health",
+    "metrics": "/metrics"
+  }
+}

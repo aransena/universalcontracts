@@ -1,0 +1,34 @@
+{
+  "schema": "universal.db.database_schema.v1",
+  "id": "customer_accounts_schema",
+  "kind": "database_schema",
+  "engine": {
+    "family": "postgresql",
+    "minimum_version": "15"
+  },
+  "objects": {
+    "customer_accounts": {
+      "type": "table",
+      "primary_key": ["id"]
+    },
+    "subscriptions": {
+      "type": "table",
+      "primary_key": ["id"]
+    }
+  },
+  "fields": {
+    "customer_accounts": {
+      "id": "text",
+      "tenant_id": "text",
+      "billing_email": "text"
+    }
+  },
+  "relationships": [
+    {
+      "from": "subscriptions.customer_account_id",
+      "to": "customer_accounts.id",
+      "kind": "many_to_one"
+    }
+  ],
+  "migrations": ["migrations/001_create_customer_accounts.sql"]
+}

@@ -28,7 +28,7 @@
     "connector.kind": ["integration_connector"]
   },
   "schemas": [],
-  "examples": [],
+  "examples": ["examples/integration-connector/connector.json"],
   "compatibility": {
     "requires_candidate_contracts": true,
     "external_schema_changes_require_mapping_review": true

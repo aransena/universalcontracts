@@ -23,6 +23,11 @@
           "maturity": { "enum": ["draft", "candidate", "stable", "deprecated"] },
           "maturity_reason": { "type": "string" },
           "candidate_since": { "type": "string" },
+          "composes_core": {
+            "type": "array",
+            "items": { "type": "string" },
+            "uniqueItems": true
+          },
           "promotion_basis": {
             "type": "array",
             "items": { "type": "string" }

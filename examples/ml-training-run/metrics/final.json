@@ -1,0 +1,12 @@
+{
+  "schema": "example.training_metrics.v1",
+  "id": "run_001_final_metrics",
+  "kind": "training_metrics",
+  "metrics": {
+    "validation_accuracy": {
+      "value": 0.91,
+      "unit": "ratio",
+      "direction": "higher_is_better"
+    }
+  }
+}

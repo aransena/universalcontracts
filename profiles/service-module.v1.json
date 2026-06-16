@@ -30,7 +30,7 @@
     "module_descriptor.kind": ["service_module", "api_service", "worker_service"]
   },
   "schemas": [],
-  "examples": [],
+  "examples": ["examples/service-module/service.json"],
   "compatibility": {
     "requires_candidate_contracts": true,
     "versioning": "Breaking changes require a new module descriptor id or declared compatibility note."

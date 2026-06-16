@@ -1,0 +1,14 @@
+{
+  "schema": "universal.db.data_access_policy.v1",
+  "id": "customer_account_access_policy",
+  "kind": "data_access_policy",
+  "subject": "customer_accounts",
+  "scopes": ["tenant"],
+  "permissions": [
+    {
+      "name": "billing.accounts.read",
+      "operations": ["select"],
+      "resources": ["customer_accounts"]
+    }
+  ]
+}

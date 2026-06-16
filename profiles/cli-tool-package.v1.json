@@ -26,7 +26,7 @@
     "cli_tool.kind": ["cli_tool", "developer_tool", "automation_tool"]
   },
   "schemas": [],
-  "examples": [],
+  "examples": ["examples/cli-tool-package/cli-tool.json"],
   "compatibility": {
     "requires_candidate_contracts": true,
     "breaking_command_changes_require_version_bump": true

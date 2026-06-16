@@ -1,0 +1,2 @@
+{"schema":"example.sensor_reading.v1","id":"reading_001","kind":"sensor_reading","timestamp_unix_ns":1789999399123456789,"temperature_c":21.4}
+{"schema":"example.sensor_reading.v1","id":"reading_002","kind":"sensor_reading","timestamp_unix_ns":1789999399156790122,"temperature_c":21.6}

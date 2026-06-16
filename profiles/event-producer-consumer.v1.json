@@ -27,7 +27,7 @@
     "delivery": ["at_least_once", "at_most_once", "exactly_once", "best_effort"]
   },
   "schemas": [],
-  "examples": [],
+  "examples": ["examples/event-producer-consumer/event-surface.json"],
   "compatibility": {
     "requires_candidate_contracts": true,
     "message_schema_changes_require_consumer_review": true

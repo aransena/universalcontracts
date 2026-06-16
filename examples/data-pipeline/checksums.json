@@ -1,0 +1,16 @@
+{
+  "schema": "example.checksum_manifest.v1",
+  "id": "sensor_dataset_checksums",
+  "kind": "checksum_manifest",
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": "data/sensor-readings.jsonl",
+      "sha256": "4dd1d5982861a76e876bf13396d6d6b11a431a2327609b2d33e0282e2c27c36a"
+    },
+    {
+      "path": "schemas/sensor-reading.schema.json",
+      "sha256": "1ef7ecd8d7520d9d3014c297a75e2bc6ea8d3d8326525b53a5ccfe4a5c64c472"
+    }
+  ]
+}

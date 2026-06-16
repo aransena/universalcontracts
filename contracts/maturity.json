@@ -1,25 +1,31 @@
 {
   "schema": "universal.contract_maturity.v1",
-  "minimum_maturity": "candidate",
-  "default_maturity": "candidate",
-  "default_candidate_since": "2026-06-05",
-  "default_maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-  "default_promotion_basis": ["standard_sections", "shared_conventions", "catalog_lint"],
+  "minimum_maturity": "draft",
+  "default_maturity": "draft",
+  "default_maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
   "contracts": {
     "universal.agent.tool_surface.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.api_surface.v1", "universal.core.command.v1", "universal.core.permissions.v1"],
       "maturity": "candidate",
       "maturity_reason": "Representative example plus agent-tool guide coverage.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
     },
     "universal.capture.payload_index.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.stream.v1"],
       "maturity": "candidate",
       "maturity_reason": "Concrete capture fixture validates the binary payload index pattern.",
       "promotion_basis": ["example", "recipe", "catalog_lint"]
     },
     "universal.capture.recording_bundle.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": [
+        "universal.core.artifact.v1",
+        "universal.core.lifecycle.v1",
+        "universal.core.manifest.v1",
+        "universal.core.stream.v1"
+      ],
       "maturity": "candidate",
       "maturity_reason": "Complete example bundle demonstrates manifest, lifecycle, streams, events, and derived artifacts.",
       "promotion_basis": ["example", "recipe", "catalog_lint"]
@@ -86,78 +92,116 @@
     },
     "universal.data.dataset.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.provenance.v1"],
       "maturity": "candidate",
       "maturity_reason": "Representative data-sharing example demonstrates files, fields, sources, privacy, and license signals.",
       "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
     },
     "universal.data.pipeline_run.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": [
+        "universal.core.command.v1",
+        "universal.core.lifecycle.v1",
+        "universal.core.provenance.v1"
+      ],
       "maturity": "candidate",
       "maturity_reason": "Dataset example declares pipeline-run participation for lineage.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
     },
     "universal.edge.board_target.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.environment.v1"],
       "maturity": "candidate",
       "maturity_reason": "Edge firmware example depends on board target discovery.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
     },
     "universal.edge.edge_deployment.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": [
+        "universal.core.config.v1",
+        "universal.core.environment.v1",
+        "universal.core.lifecycle.v1",
+        "universal.core.observability.v1"
+      ],
       "maturity": "candidate",
       "maturity_reason": "SBC deployment example demonstrates hardware, software, configuration, health, and rollback handoff.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
     },
     "universal.edge.firmware_image.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.artifact.v1", "universal.core.provenance.v1"],
       "maturity": "candidate",
       "maturity_reason": "Edge firmware example declares firmware image outputs and compatibility.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
     },
     "universal.edge.firmware_project.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": [
+        "universal.core.artifact.v1",
+        "universal.core.command.v1",
+        "universal.core.config.v1",
+        "universal.core.environment.v1",
+        "universal.core.test_run.v1"
+      ],
       "maturity": "candidate",
       "maturity_reason": "Representative firmware project example covers source, build, target, runtime, configuration, tests, and outputs.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
     },
     "universal.edge.sbc_hardware.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.environment.v1"],
       "maturity": "candidate",
       "maturity_reason": "SBC deployment example declares hardware profile participation.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
     },
     "universal.edge.sbc_image.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.artifact.v1", "universal.core.environment.v1"],
       "maturity": "candidate",
       "maturity_reason": "SBC deployment example declares image compatibility and deployment handoff.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
     },
     "universal.edge.sbc_service.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": [
+        "universal.core.command.v1",
+        "universal.core.config.v1",
+        "universal.core.environment.v1",
+        "universal.core.observability.v1"
+      ],
       "maturity": "candidate",
       "maturity_reason": "SBC deployment example declares edge service handoff points.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
     },
     "universal.ml.model_artifact.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.artifact.v1", "universal.core.provenance.v1"],
       "maturity": "candidate",
       "maturity_reason": "ML training example links training output to model artifact semantics.",
       "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
     },
     "universal.ml.training_run.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": [
+        "universal.core.artifact.v1",
+        "universal.core.command.v1",
+        "universal.core.lifecycle.v1",
+        "universal.core.provenance.v1"
+      ],
       "maturity": "candidate",
       "maturity_reason": "Representative training-run example covers inputs, lifecycle, parameters, outputs, and metrics.",
       "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
     },
     "universal.ops.service_health.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.observability.v1"],
       "maturity": "candidate",
       "maturity_reason": "Edge deployment example declares health handoff.",
       "promotion_basis": ["example", "recipe", "catalog_lint"]
     },
     "universal.ui.accessibility.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.test_run.v1"],
       "maturity": "candidate",
       "maturity_reason": "UI design-system example declares accessibility expectations.",
       "promotion_basis": ["example", "guide", "catalog_lint"]
@@ -170,12 +214,18 @@
     },
     "universal.ui.design_system.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": ["universal.core.artifact.v1"],
       "maturity": "candidate",
       "maturity_reason": "Representative design-system example covers tokens, components, assets, themes, and accessibility.",
       "promotion_basis": ["example", "guide", "recipe", "catalog_lint"]
     },
     "universal.web.project.v1": {
       "candidate_since": "2026-06-05",
+      "composes_core": [
+        "universal.core.command.v1",
+        "universal.core.config.v1",
+        "universal.core.environment.v1"
+      ],
       "maturity": "candidate",
       "maturity_reason": "Representative web project example covers framework family, package, commands, configuration, outputs, and deployment target.",
       "promotion_basis": ["example", "guide", "catalog_lint"]

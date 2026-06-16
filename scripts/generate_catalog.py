@@ -11,20 +11,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_RE = re.compile(r"^Contract ID:\s*`([^`]+)`", re.MULTILINE)
 
-CORE_KEYWORDS = [
-    ("universal.core.lifecycle.v1", ("lifecycle", "state", "closed", "failed")),
-    ("universal.core.stream.v1", ("stream", "streams", "jsonl", "payload")),
-    ("universal.core.artifact.v1", ("artifact", "artifacts", "derived")),
-    ("universal.core.config.v1", ("config", "configuration", "environment variables", "defaults")),
-    ("universal.core.command.v1", ("command", "commands", "exit_codes", "side effects")),
-    ("universal.core.api_surface.v1", ("api", "endpoint", "request", "response", "transport")),
-    ("universal.core.permissions.v1", ("permission", "permissions", "auth", "approval", "secrets")),
-    ("universal.core.observability.v1", ("observability", "logs", "metrics", "traces", "health")),
-    ("universal.core.provenance.v1", ("provenance", "sources", "checksums", "lineage")),
-    ("universal.core.environment.v1", ("environment", "runtime", "dependencies", "hardware")),
-    ("universal.core.test_run.v1", ("test", "tests", "fixtures", "coverage")),
-]
-
 RELATED_DOMAIN_PACKS = {
     "agent-systems": ["api-services", "knowledge-documents", "workflow-automation"],
     "application-services": ["web-apps", "api-services", "databases-storage", "workflow-automation", "deployment-ops"],
@@ -85,6 +71,21 @@ def maturity_for(metadata: dict[str, object], section: str, key: str) -> dict[st
     return result
 
 
+def explicit_core_composition(metadata: dict[str, object], contract_id: str, area: str) -> list[str]:
+    if area == "core":
+        return []
+    contracts = metadata.get("contracts", {})
+    if not isinstance(contracts, dict):
+        return []
+    entry = contracts.get(contract_id, {})
+    if not isinstance(entry, dict):
+        return []
+    composes_core = entry.get("composes_core", [])
+    if not isinstance(composes_core, list):
+        return []
+    return sorted(item for item in composes_core if isinstance(item, str))
+
+
 def contract_files() -> list[Path]:
     return sorted((ROOT / "contracts").glob("**/*.v1.md"))
 
@@ -109,19 +110,6 @@ def area_and_domain(path: Path) -> tuple[str, str | None]:
     if rel[1] == "domains":
         return "domain", rel[2]
     return "unknown", None
-
-
-def infer_core_composition(contract_id: str, text: str, area: str) -> list[str]:
-    if area == "core":
-        return []
-    lowered = text.lower()
-    inferred = []
-    for core_id, keywords in CORE_KEYWORDS:
-        if core_id == contract_id:
-            continue
-        if any(keyword in lowered for keyword in keywords):
-            inferred.append(core_id)
-    return sorted(set(inferred))
 
 
 def examples_by_contract() -> dict[str, list[str]]:
@@ -171,7 +159,6 @@ def build_catalog() -> dict[str, object]:
     for path in contract_files():
         contract_id, title = parse_contract(path)
         area, domain = area_and_domain(path)
-        text = path.read_text(encoding="utf-8")
         rel_path = str(path.relative_to(ROOT))
         entry = {
                 "id": contract_id,
@@ -179,7 +166,7 @@ def build_catalog() -> dict[str, object]:
                 "path": rel_path,
                 "area": area,
                 "domain": domain,
-                "composes_core": infer_core_composition(contract_id, text, area),
+                "composes_core": explicit_core_composition(maturity_metadata, contract_id, area),
                 "related_domain_packs": RELATED_DOMAIN_PACKS.get(domain or "", []),
                 "example_paths": example_map.get(contract_id, []),
             }

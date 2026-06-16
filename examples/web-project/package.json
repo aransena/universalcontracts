@@ -1,0 +1,12 @@
+{
+  "schema": "example.package_manifest.v1",
+  "id": "example_web_package",
+  "kind": "dependency_manifest",
+  "name": "example-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "project build",
+    "test": "project test"
+  }
+}

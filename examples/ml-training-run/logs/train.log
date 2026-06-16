@@ -1,0 +1,4 @@
+training started
+epoch 1 validation_accuracy=0.82
+epoch 5 validation_accuracy=0.91
+training closed cleanly

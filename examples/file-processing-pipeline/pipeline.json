@@ -1,0 +1,37 @@
+{
+  "schema": "universal.app.file_upload.v1",
+  "id": "example_document_ingest",
+  "kind": "file_upload",
+  "created_at": "2026-06-05T12:00:00Z",
+  "producer": {
+    "project": "example-document-service",
+    "version": "0.1.0"
+  },
+  "contracts": [
+    "universal.app.file_upload.v1",
+    "universal.db.object_store_layout.v1",
+    "universal.knowledge.extraction_run.v1",
+    "universal.core.artifact.v1",
+    "universal.core.provenance.v1"
+  ],
+  "profile": "universal.profile.file_processing_pipeline.v1",
+  "inputs": {
+    "accepted_media_types": ["application/pdf"],
+    "maximum_bytes": 10485760
+  },
+  "storage": {
+    "bucket": "documents",
+    "prefix": "tenant_id/upload_id"
+  },
+  "validation": {
+    "virus_scan": true,
+    "checksum": "sha256"
+  },
+  "processing": {
+    "steps": ["extract_text", "render_preview"],
+    "artifacts": ["text", "thumbnail"]
+  },
+  "security": {
+    "permissions": ["documents.write"]
+  }
+}

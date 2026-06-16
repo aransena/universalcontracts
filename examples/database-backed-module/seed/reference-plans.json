@@ -1,0 +1,13 @@
+{
+  "schema": "universal.db.seed_data.v1",
+  "id": "reference_plans_seed",
+  "kind": "seed_data",
+  "environment": "test",
+  "records": [
+    {
+      "table": "plans",
+      "id": "starter",
+      "name": "Starter"
+    }
+  ]
+}

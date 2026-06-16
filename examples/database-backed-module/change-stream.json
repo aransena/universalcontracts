@@ -1,0 +1,12 @@
+{
+  "schema": "universal.db.change_stream.v1",
+  "id": "customer_account_changes",
+  "kind": "change_stream",
+  "source": "customer_accounts",
+  "messages": {
+    "customer_account_created": {
+      "key": "customer_account.id",
+      "timestamps": ["timestamp_unix_ns"]
+    }
+  }
+}

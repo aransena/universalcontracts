@@ -3,19 +3,15 @@
   "contracts": [
     {
       "area": "core",
-      "candidate_since": "2026-06-05",
       "composes_core": [],
       "domain": null,
-      "example_paths": [],
-      "id": "universal.core.api_surface.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/core/api-surface.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/service-module/service.json"
       ],
+      "id": "universal.core.api_surface.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/core/api-surface.v1.md",
       "related_domain_packs": [],
       "title": "API Surface Contract v1"
     },
@@ -26,7 +22,9 @@
       "domain": null,
       "example_paths": [
         "examples/capture-recording-bundle/derived/world_h265/artifact.json",
-        "examples/capture-recording-bundle/manifest.json"
+        "examples/capture-recording-bundle/manifest.json",
+        "examples/file-processing-pipeline/pipeline.json",
+        "examples/ml-training-run/model-artifact.json"
       ],
       "id": "universal.core.artifact.v1",
       "maturity": "candidate",
@@ -47,7 +45,9 @@
       "domain": null,
       "example_paths": [
         "examples/agent-tool-surface/tool-surface.json",
+        "examples/cli-tool-package/cli-tool.json",
         "examples/edge-firmware-project/firmware-project.json",
+        "examples/service-module/service.json",
         "examples/web-project/project.json"
       ],
       "id": "universal.core.command.v1",
@@ -68,6 +68,8 @@
       "composes_core": [],
       "domain": null,
       "example_paths": [
+        "examples/cli-tool-package/cli-tool.json",
+        "examples/service-module/service.json",
         "examples/web-project/project.json"
       ],
       "id": "universal.core.config.v1",
@@ -89,6 +91,7 @@
       "domain": null,
       "example_paths": [
         "examples/edge-firmware-project/firmware-project.json",
+        "examples/service-module/service.json",
         "examples/web-project/project.json"
       ],
       "id": "universal.core.environment.v1",
@@ -111,6 +114,7 @@
       "example_paths": [
         "examples/capture-recording-bundle/lifecycle.json",
         "examples/capture-recording-bundle/manifest.json",
+        "examples/ml-training-run/lifecycle.json",
         "examples/ml-training-run/training-run.json"
       ],
       "id": "universal.core.lifecycle.v1",
@@ -147,19 +151,17 @@
     },
     {
       "area": "core",
-      "candidate_since": "2026-06-05",
       "composes_core": [],
       "domain": null,
-      "example_paths": [],
-      "id": "universal.core.observability.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/core/observability.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/event-producer-consumer/event-surface.json",
+        "examples/integration-connector/connector.json",
+        "examples/service-module/service.json"
       ],
+      "id": "universal.core.observability.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/core/observability.v1.md",
       "related_domain_packs": [],
       "title": "Observability Contract v1"
     },
@@ -169,7 +171,11 @@
       "composes_core": [],
       "domain": null,
       "example_paths": [
-        "examples/agent-tool-surface/tool-surface.json"
+        "examples/agent-tool-surface/tool-surface.json",
+        "examples/cli-tool-package/cli-tool.json",
+        "examples/event-producer-consumer/event-surface.json",
+        "examples/integration-connector/connector.json",
+        "examples/service-module/service.json"
       ],
       "id": "universal.core.permissions.v1",
       "maturity": "candidate",
@@ -188,7 +194,9 @@
       "candidate_since": "2026-06-05",
       "composes_core": [],
       "domain": null,
-      "example_paths": [],
+      "example_paths": [
+        "examples/service-module/service.json"
+      ],
       "id": "universal.core.project.v1",
       "maturity": "candidate",
       "maturity_reason": "Foundational agent-facing repository contract with standardized sections.",
@@ -208,6 +216,7 @@
       "domain": null,
       "example_paths": [
         "examples/data-pipeline/dataset.json",
+        "examples/file-processing-pipeline/pipeline.json",
         "examples/ml-training-run/training-run.json"
       ],
       "id": "universal.core.provenance.v1",
@@ -231,7 +240,8 @@
         "examples/capture-recording-bundle/manifest.json",
         "examples/capture-recording-bundle/streams/audio/stream.json",
         "examples/capture-recording-bundle/streams/eeg/stream.json",
-        "examples/capture-recording-bundle/streams/world_video/stream.json"
+        "examples/capture-recording-bundle/streams/world_video/stream.json",
+        "examples/event-producer-consumer/event-surface.json"
       ],
       "id": "universal.core.stream.v1",
       "maturity": "candidate",
@@ -247,43 +257,25 @@
     },
     {
       "area": "core",
-      "candidate_since": "2026-06-05",
       "composes_core": [],
       "domain": null,
       "example_paths": [],
       "id": "universal.core.test_run.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/core/test-run.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [],
       "title": "Test Run Contract v1"
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.environment.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "agent-systems",
       "example_paths": [],
       "id": "universal.agent.capability.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/agent-systems/agent-capability.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "knowledge-documents",
@@ -293,26 +285,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "agent-systems",
       "example_paths": [],
       "id": "universal.agent.agent_trace.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/agent-systems/agent-trace.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "knowledge-documents",
@@ -322,27 +301,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "agent-systems",
       "example_paths": [],
       "id": "universal.agent.conversation_session.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/agent-systems/conversation-session.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "knowledge-documents",
@@ -352,22 +317,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "agent-systems",
       "example_paths": [],
       "id": "universal.agent.memory_store.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/agent-systems/memory-store.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "knowledge-documents",
@@ -381,7 +337,6 @@
       "composes_core": [
         "universal.core.api_surface.v1",
         "universal.core.command.v1",
-        "universal.core.environment.v1",
         "universal.core.permissions.v1"
       ],
       "domain": "agent-systems",
@@ -406,28 +361,16 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "api-services",
-      "example_paths": [],
-      "id": "universal.api.background_job.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/api-services/background-job.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/integration-connector/connector.json",
+        "examples/service-module/service.json"
       ],
+      "id": "universal.api.background_job.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/api-services/background-job.v1.md",
       "related_domain_packs": [
         "web-apps",
         "workflow-automation",
@@ -437,24 +380,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "api-services",
       "example_paths": [],
       "id": "universal.api.endpoint.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/api-services/endpoint.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "workflow-automation",
@@ -464,26 +396,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "api-services",
-      "example_paths": [],
-      "id": "universal.api.service_surface.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/api-services/service-surface.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/service-module/service.json"
       ],
+      "id": "universal.api.service_surface.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/api-services/service-surface.v1.md",
       "related_domain_packs": [
         "web-apps",
         "workflow-automation",
@@ -493,23 +414,16 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "api-services",
-      "example_paths": [],
-      "id": "universal.api.webhook.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/api-services/webhook.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/event-producer-consumer/event-surface.json",
+        "examples/integration-connector/connector.json"
       ],
+      "id": "universal.api.webhook.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/api-services/webhook.v1.md",
       "related_domain_packs": [
         "web-apps",
         "workflow-automation",
@@ -519,24 +433,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.access_control.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/access-control.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -548,24 +451,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.audit_log.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/audit-log.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -577,22 +469,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
-      "example_paths": [],
-      "id": "universal.app.auth_identity.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/application-services/auth-identity.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/integration-connector/connector.json"
       ],
+      "id": "universal.app.auth_identity.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/application-services/auth-identity.v1.md",
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -604,25 +489,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.cache_policy.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/cache-policy.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -634,25 +507,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.feature_flag.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/feature-flag.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -664,25 +525,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
-      "example_paths": [],
-      "id": "universal.app.file_upload.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/application-services/file-upload.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/file-processing-pipeline/pipeline.json"
       ],
+      "id": "universal.app.file_upload.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/application-services/file-upload.v1.md",
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -694,24 +545,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.command.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
-      "example_paths": [],
-      "id": "universal.app.integration_connector.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/application-services/integration-connector.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/integration-connector/connector.json"
       ],
+      "id": "universal.app.integration_connector.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/application-services/integration-connector.v1.md",
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -723,24 +565,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.localization.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/localization.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -752,21 +583,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.notification.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/notification.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -778,24 +601,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.payment_billing.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/payment-billing.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -807,26 +619,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.search_surface.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/search-surface.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -838,22 +637,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.lifecycle.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.user_account.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/user-account.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -865,24 +655,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "application-services",
       "example_paths": [],
       "id": "universal.app.user_session.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services/user-session.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -894,27 +673,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "capture",
       "example_paths": [],
       "id": "universal.capture.device.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/capture/capture-device.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "edge-devices",
         "media-assets",
@@ -926,8 +691,6 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.provenance.v1",
         "universal.core.stream.v1"
       ],
       "domain": "capture",
@@ -954,12 +717,10 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.api_surface.v1",
         "universal.core.artifact.v1",
-        "universal.core.environment.v1",
         "universal.core.lifecycle.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
+        "universal.core.manifest.v1",
+        "universal.core.stream.v1"
       ],
       "domain": "capture",
       "example_paths": [
@@ -983,25 +744,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "cli-tools",
-      "example_paths": [],
-      "id": "universal.cli.tool.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/cli-tools/cli-tool.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/cli-tool-package/cli-tool.json"
       ],
+      "id": "universal.cli.tool.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/cli-tools/cli-tool.v1.md",
       "related_domain_packs": [
         "project",
         "workflow-automation",
@@ -1013,10 +764,7 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
+        "universal.core.provenance.v1"
       ],
       "domain": "data-pipelines",
       "example_paths": [
@@ -1044,13 +792,9 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.artifact.v1",
         "universal.core.command.v1",
-        "universal.core.environment.v1",
         "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1"
+        "universal.core.provenance.v1"
       ],
       "domain": "data-pipelines",
       "example_paths": [
@@ -1074,23 +818,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [],
       "id": "universal.db.backup.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/backup.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1101,22 +835,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
-      "example_paths": [],
-      "id": "universal.db.change_stream.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/databases-storage/change-stream.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/database-backed-module/change-stream.json"
       ],
+      "id": "universal.db.change_stream.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/databases-storage/change-stream.v1.md",
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1127,25 +854,16 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [
+        "examples/database-backed-module/data-access-policy.json",
         "examples/database-backed-module/data-model.json"
       ],
       "id": "universal.db.data_access_policy.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/data-access-policy.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1156,27 +874,16 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.config.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [
-        "examples/database-backed-module/data-model.json"
+        "examples/database-backed-module/data-model.json",
+        "examples/integration-connector/connector.json"
       ],
       "id": "universal.db.data_model.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/data-model.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1187,21 +894,16 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
       "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [
-        "examples/database-backed-module/data-model.json"
+        "examples/database-backed-module/data-model.json",
+        "examples/database-backed-module/schema/customer_accounts.schema.json"
       ],
       "id": "universal.db.database_schema.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/database-schema.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1212,22 +914,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [],
       "id": "universal.db.index_plan.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/index-plan.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1238,23 +931,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.command.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [
         "examples/database-backed-module/data-model.json"
       ],
       "id": "universal.db.migration.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/migration.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1265,22 +950,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
-      "example_paths": [],
-      "id": "universal.db.object_store_layout.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/databases-storage/object-store-layout.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/file-processing-pipeline/pipeline.json"
       ],
+      "id": "universal.db.object_store_layout.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/databases-storage/object-store-layout.v1.md",
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1291,26 +969,16 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.config.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [
-        "examples/database-backed-module/data-model.json"
+        "examples/database-backed-module/data-model.json",
+        "examples/database-backed-module/query-surface.json"
       ],
       "id": "universal.db.query_surface.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/query-surface.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1321,25 +989,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [],
       "id": "universal.db.replication.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/replication.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1350,26 +1006,16 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.environment.v1",
-        "universal.core.provenance.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [
-        "examples/database-backed-module/data-model.json"
+        "examples/database-backed-module/data-model.json",
+        "examples/database-backed-module/seed/reference-plans.json"
       ],
       "id": "universal.db.seed_data.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/seed-data.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1380,25 +1026,16 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.command.v1",
-        "universal.core.lifecycle.v1"
-      ],
+      "composes_core": [],
       "domain": "databases-storage",
       "example_paths": [
-        "examples/database-backed-module/data-model.json"
+        "examples/database-backed-module/data-model.json",
+        "examples/database-backed-module/transaction-boundaries.json"
       ],
       "id": "universal.db.transaction_boundary.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage/transaction-boundary.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -1409,27 +1046,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "deployment-ops",
-      "example_paths": [],
-      "id": "universal.ops.deployment.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/deployment-ops/deployment.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/service-module/service.json"
       ],
+      "id": "universal.ops.deployment.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/deployment-ops/deployment.v1.md",
       "related_domain_packs": [
         "api-services",
         "application-services",
@@ -1440,27 +1065,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "deployment-ops",
       "example_paths": [],
       "id": "universal.ops.environment.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/deployment-ops/environment.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "application-services",
@@ -1471,24 +1082,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "deployment-ops",
       "example_paths": [],
       "id": "universal.ops.incident.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/deployment-ops/incident.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "application-services",
@@ -1499,27 +1099,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.environment.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "deployment-ops",
       "example_paths": [],
       "id": "universal.ops.release.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/deployment-ops/release.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "application-services",
@@ -1532,13 +1118,12 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.environment.v1",
         "universal.core.observability.v1"
       ],
       "domain": "deployment-ops",
       "example_paths": [
-        "examples/edge-sbc-deployment/deployment.json"
+        "examples/edge-sbc-deployment/deployment.json",
+        "examples/service-module/service.json"
       ],
       "id": "universal.ops.service_health.v1",
       "maturity": "candidate",
@@ -1561,8 +1146,7 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.environment.v1",
-        "universal.core.test_run.v1"
+        "universal.core.environment.v1"
       ],
       "domain": "edge-devices",
       "example_paths": [
@@ -1590,9 +1174,8 @@
       "composes_core": [
         "universal.core.config.v1",
         "universal.core.environment.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1"
+        "universal.core.lifecycle.v1",
+        "universal.core.observability.v1"
       ],
       "domain": "edge-devices",
       "example_paths": [
@@ -1618,9 +1201,7 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
+        "universal.core.artifact.v1",
         "universal.core.provenance.v1"
       ],
       "domain": "edge-devices",
@@ -1647,14 +1228,10 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.api_surface.v1",
         "universal.core.artifact.v1",
         "universal.core.command.v1",
         "universal.core.config.v1",
         "universal.core.environment.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
         "universal.core.test_run.v1"
       ],
       "domain": "edge-devices",
@@ -1679,24 +1256,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.environment.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "edge-devices",
       "example_paths": [],
       "id": "universal.edge.flash_debug.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/edge-devices/flash-debug.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "robotics-iot",
         "capture",
@@ -1706,27 +1272,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "edge-devices",
       "example_paths": [],
       "id": "universal.edge.ota_update.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/edge-devices/ota-update.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "robotics-iot",
         "capture",
@@ -1736,22 +1288,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.config.v1",
-        "universal.core.lifecycle.v1"
-      ],
+      "composes_core": [],
       "domain": "edge-devices",
       "example_paths": [],
       "id": "universal.edge.peripheral_map.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/edge-devices/peripheral-map.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "robotics-iot",
         "capture",
@@ -1761,22 +1304,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.environment.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "edge-devices",
       "example_paths": [],
       "id": "universal.edge.power_profile.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/edge-devices/power-profile.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "robotics-iot",
         "capture",
@@ -1786,24 +1320,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "edge-devices",
       "example_paths": [],
       "id": "universal.edge.provisioning.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/edge-devices/provisioning.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "robotics-iot",
         "capture",
@@ -1815,7 +1338,6 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.config.v1",
         "universal.core.environment.v1"
       ],
       "domain": "edge-devices",
@@ -1842,12 +1364,8 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.provenance.v1"
+        "universal.core.artifact.v1",
+        "universal.core.environment.v1"
       ],
       "domain": "edge-devices",
       "example_paths": [
@@ -1873,13 +1391,10 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
+        "universal.core.command.v1",
         "universal.core.config.v1",
         "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1"
+        "universal.core.observability.v1"
       ],
       "domain": "edge-devices",
       "example_paths": [
@@ -1903,24 +1418,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.command.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "edge-devices",
       "example_paths": [],
       "id": "universal.edge.telemetry_control.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/edge-devices/telemetry-control.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "robotics-iot",
         "capture",
@@ -1930,21 +1434,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "geospatial",
       "example_paths": [],
       "id": "universal.geo.coordinate_frame.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/geospatial/coordinate-frame.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "simulation-systems",
         "robotics-iot",
@@ -1954,23 +1450,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "geospatial",
       "example_paths": [],
       "id": "universal.geo.map_layer.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/geospatial/map-layer.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "simulation-systems",
         "robotics-iot",
@@ -1980,22 +1466,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.provenance.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "geospatial",
       "example_paths": [],
       "id": "universal.geo.tile_set.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/geospatial/tile-set.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "simulation-systems",
         "robotics-iot",
@@ -2005,21 +1482,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "geospatial",
       "example_paths": [],
       "id": "universal.geo.trajectory.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/geospatial/trajectory.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "simulation-systems",
         "robotics-iot",
@@ -2029,21 +1498,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1"
-      ],
+      "composes_core": [],
       "domain": "knowledge-documents",
       "example_paths": [],
       "id": "universal.knowledge.annotation_set.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/knowledge-documents/annotation-set.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "agent-systems",
         "data-pipelines",
@@ -2053,23 +1514,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "knowledge-documents",
       "example_paths": [],
       "id": "universal.knowledge.document_corpus.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/knowledge-documents/document-corpus.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "agent-systems",
         "data-pipelines",
@@ -2079,24 +1530,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "knowledge-documents",
       "example_paths": [],
       "id": "universal.knowledge.document.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/knowledge-documents/document.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "agent-systems",
         "data-pipelines",
@@ -2106,23 +1546,15 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "knowledge-documents",
-      "example_paths": [],
-      "id": "universal.knowledge.extraction_run.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/knowledge-documents/extraction-run.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/file-processing-pipeline/pipeline.json"
       ],
+      "id": "universal.knowledge.extraction_run.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/knowledge-documents/extraction-run.v1.md",
       "related_domain_packs": [
         "agent-systems",
         "data-pipelines",
@@ -2132,22 +1564,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "knowledge-documents",
       "example_paths": [],
       "id": "universal.knowledge.search_index.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/knowledge-documents/search-index.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "agent-systems",
         "data-pipelines",
@@ -2157,21 +1580,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "media-assets",
       "example_paths": [],
       "id": "universal.media.annotation_track.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/media-assets/annotation-track.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "capture",
         "ui-systems",
@@ -2181,23 +1596,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "media-assets",
       "example_paths": [],
       "id": "universal.media.media_asset.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/media-assets/media-asset.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "capture",
         "ui-systems",
@@ -2207,24 +1612,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "media-assets",
       "example_paths": [],
       "id": "universal.media.rendition.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/media-assets/rendition.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "capture",
         "ui-systems",
@@ -2234,22 +1628,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.lifecycle.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "media-assets",
       "example_paths": [],
       "id": "universal.media.timeline.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/media-assets/timeline.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "capture",
         "ui-systems",
@@ -2259,27 +1644,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "ml-systems",
       "example_paths": [],
       "id": "universal.ml.evaluation_report.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/ml-systems/evaluation-report.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "data-pipelines",
         "agent-systems",
@@ -2289,27 +1660,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "ml-systems",
       "example_paths": [],
       "id": "universal.ml.inference_service.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/ml-systems/inference-service.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "data-pipelines",
         "agent-systems",
@@ -2322,15 +1679,11 @@
       "candidate_since": "2026-06-05",
       "composes_core": [
         "universal.core.artifact.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1"
+        "universal.core.provenance.v1"
       ],
       "domain": "ml-systems",
       "example_paths": [
+        "examples/ml-training-run/model-artifact.json",
         "examples/ml-training-run/training-run.json"
       ],
       "id": "universal.ml.model_artifact.v1",
@@ -2356,13 +1709,8 @@
       "composes_core": [
         "universal.core.artifact.v1",
         "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
         "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
+        "universal.core.provenance.v1"
       ],
       "domain": "ml-systems",
       "example_paths": [
@@ -2387,28 +1735,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "plugins",
       "example_paths": [],
       "id": "universal.plugin.package.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/plugins/plugin-package.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "agent-systems",
         "cli-tools",
@@ -2418,25 +1751,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "realtime-systems",
       "example_paths": [],
       "id": "universal.realtime.session.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/realtime-systems/realtime-session.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "capture",
@@ -2446,25 +1767,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "robotics-iot",
       "example_paths": [],
       "id": "universal.iot.actuator.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/robotics-iot/actuator.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "edge-devices",
         "geospatial",
@@ -2474,24 +1783,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "robotics-iot",
       "example_paths": [],
       "id": "universal.iot.calibration.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/robotics-iot/calibration.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "edge-devices",
         "geospatial",
@@ -2501,24 +1799,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.environment.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "robotics-iot",
       "example_paths": [],
       "id": "universal.iot.command_log.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/robotics-iot/command-log.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "edge-devices",
         "geospatial",
@@ -2528,25 +1815,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "robotics-iot",
       "example_paths": [],
       "id": "universal.iot.device_fleet.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/robotics-iot/device-fleet.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "edge-devices",
         "geospatial",
@@ -2556,26 +1831,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "simulation-systems",
       "example_paths": [],
       "id": "universal.sim.scenario.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/simulation-systems/scenario.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "geospatial",
         "robotics-iot",
@@ -2585,26 +1847,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "simulation-systems",
       "example_paths": [],
       "id": "universal.sim.simulation_run.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/simulation-systems/simulation-run.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "geospatial",
         "robotics-iot",
@@ -2614,23 +1863,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "simulation-systems",
       "example_paths": [],
       "id": "universal.sim.synthetic_dataset.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/simulation-systems/synthetic-dataset.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "geospatial",
         "robotics-iot",
@@ -2640,23 +1879,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.provenance.v1"
-      ],
+      "composes_core": [],
       "domain": "simulation-systems",
       "example_paths": [],
       "id": "universal.sim.world_state.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/simulation-systems/world-state.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "geospatial",
         "robotics-iot",
@@ -2668,7 +1897,6 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.lifecycle.v1",
         "universal.core.test_run.v1"
       ],
       "domain": "ui-systems",
@@ -2694,12 +1922,7 @@
     {
       "area": "domain",
       "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "ui-systems",
       "example_paths": [
         "examples/ui-design-system/design-system.json"
@@ -2724,8 +1947,7 @@
       "area": "domain",
       "candidate_since": "2026-06-05",
       "composes_core": [
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1"
+        "universal.core.artifact.v1"
       ],
       "domain": "ui-systems",
       "example_paths": [
@@ -2750,26 +1972,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "ui-systems",
       "example_paths": [],
       "id": "universal.ui.screen.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/ui-systems/screen.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "media-assets",
@@ -2779,25 +1988,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "ui-systems",
       "example_paths": [],
       "id": "universal.ui.user_flow.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/ui-systems/user-flow.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "media-assets",
@@ -2807,25 +2004,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "ui-systems",
       "example_paths": [],
       "id": "universal.ui.visual_regression.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/ui-systems/visual-regression.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "media-assets",
@@ -2835,24 +2020,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "web-apps",
       "example_paths": [],
       "id": "universal.web.api_client.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/web-apps/api-client.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "ui-systems",
         "api-services",
@@ -2863,22 +2037,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.config.v1",
-        "universal.core.lifecycle.v1"
-      ],
+      "composes_core": [],
       "domain": "web-apps",
       "example_paths": [],
       "id": "universal.web.browser_storage.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/web-apps/browser-storage.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "ui-systems",
         "api-services",
@@ -2889,26 +2054,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.command.v1",
-        "universal.core.config.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "web-apps",
       "example_paths": [],
       "id": "universal.web.form.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/web-apps/form.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "ui-systems",
         "api-services",
@@ -2919,27 +2071,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.command.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1",
-        "universal.core.stream.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "web-apps",
       "example_paths": [],
       "id": "universal.web.route.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/web-apps/route.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "ui-systems",
         "api-services",
@@ -2950,26 +2088,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "web-apps",
       "example_paths": [],
       "id": "universal.web.test_surface.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/web-apps/test-surface.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "ui-systems",
         "api-services",
@@ -2980,27 +2105,13 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.command.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.test_run.v1"
-      ],
+      "composes_core": [],
       "domain": "web-apps",
       "example_paths": [],
       "id": "universal.web.app_surface.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/web-apps/web-app-surface.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "ui-systems",
         "api-services",
@@ -3015,9 +2126,7 @@
       "composes_core": [
         "universal.core.command.v1",
         "universal.core.config.v1",
-        "universal.core.environment.v1",
-        "universal.core.permissions.v1",
-        "universal.core.test_run.v1"
+        "universal.core.environment.v1"
       ],
       "domain": "web-apps",
       "example_paths": [
@@ -3042,97 +2151,51 @@
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "workflow-automation",
-      "example_paths": [],
-      "id": "universal.workflow.queue.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
-      "path": "contracts/domains/workflow-automation/queue.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
+      "example_paths": [
+        "examples/event-producer-consumer/event-surface.json"
       ],
+      "id": "universal.workflow.queue.v1",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
+      "path": "contracts/domains/workflow-automation/queue.v1.md",
       "related_domain_packs": [],
       "title": "Queue Contract v1"
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.command.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "workflow-automation",
       "example_paths": [],
       "id": "universal.workflow.schedule.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/workflow-automation/schedule.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [],
       "title": "Schedule Contract v1"
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.observability.v1",
-        "universal.core.permissions.v1",
-        "universal.core.provenance.v1",
-        "universal.core.stream.v1"
-      ],
+      "composes_core": [],
       "domain": "workflow-automation",
       "example_paths": [],
       "id": "universal.workflow.task_run.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/workflow-automation/task-run.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [],
       "title": "Task Run Contract v1"
     },
     {
       "area": "domain",
-      "candidate_since": "2026-06-05",
-      "composes_core": [
-        "universal.core.api_surface.v1",
-        "universal.core.artifact.v1",
-        "universal.core.command.v1",
-        "universal.core.environment.v1",
-        "universal.core.lifecycle.v1",
-        "universal.core.permissions.v1"
-      ],
+      "composes_core": [],
       "domain": "workflow-automation",
       "example_paths": [],
       "id": "universal.workflow.workflow.v1",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/workflow-automation/workflow.v1.md",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [],
       "title": "Workflow Contract v1"
     }
@@ -3158,17 +2221,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 4,
       "id": "api-services",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/api-services",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "workflow-automation",
@@ -3176,17 +2233,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 13,
       "id": "application-services",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/application-services",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "web-apps",
         "api-services",
@@ -3214,17 +2265,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 1,
       "id": "cli-tools",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/cli-tools",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "project",
         "workflow-automation",
@@ -3251,17 +2296,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 12,
       "id": "databases-storage",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/databases-storage",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "application-services",
         "data-pipelines",
@@ -3270,17 +2309,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 5,
       "id": "deployment-ops",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/deployment-ops",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "application-services",
@@ -3307,17 +2340,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 4,
       "id": "geospatial",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/geospatial",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "simulation-systems",
         "robotics-iot",
@@ -3325,17 +2352,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 5,
       "id": "knowledge-documents",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/knowledge-documents",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "agent-systems",
         "data-pipelines",
@@ -3343,17 +2364,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 4,
       "id": "media-assets",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/media-assets",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "capture",
         "ui-systems",
@@ -3380,17 +2395,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 1,
       "id": "plugins",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/plugins",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "agent-systems",
         "cli-tools",
@@ -3398,17 +2407,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 1,
       "id": "realtime-systems",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/realtime-systems",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "api-services",
         "capture",
@@ -3416,17 +2419,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 4,
       "id": "robotics-iot",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/robotics-iot",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "edge-devices",
         "geospatial",
@@ -3434,17 +2431,11 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 4,
       "id": "simulation-systems",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/simulation-systems",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": [
         "geospatial",
         "robotics-iot",
@@ -3490,21 +2481,15 @@
       ]
     },
     {
-      "candidate_since": "2026-06-05",
       "contract_count": 4,
       "id": "workflow-automation",
-      "maturity": "candidate",
-      "maturity_reason": "Promoted after repository-wide section standardization, shared naming and time conventions, catalog coverage, and linter enforcement.",
+      "maturity": "draft",
+      "maturity_reason": "Draft until representative examples, validator coverage, or real project adoption justify candidate promotion.",
       "path": "contracts/domains/workflow-automation",
-      "promotion_basis": [
-        "standard_sections",
-        "shared_conventions",
-        "catalog_lint"
-      ],
       "related_domain_packs": []
     }
   ],
-  "minimum_maturity": "candidate",
+  "minimum_maturity": "draft",
   "profiles": [
     {
       "base_contracts": [
@@ -3522,7 +2507,9 @@
         "plugins",
         "workflow-automation"
       ],
-      "example_paths": [],
+      "example_paths": [
+        "examples/cli-tool-package/cli-tool.json"
+      ],
       "id": "universal.profile.cli_tool_package.v1",
       "maturity": "candidate",
       "minimum_conformance": "interoperable",
@@ -3636,7 +2623,9 @@
         "realtime-systems",
         "databases-storage"
       ],
-      "example_paths": [],
+      "example_paths": [
+        "examples/event-producer-consumer/event-surface.json"
+      ],
       "id": "universal.profile.event_producer_consumer.v1",
       "maturity": "candidate",
       "minimum_conformance": "interoperable",
@@ -3664,7 +2653,9 @@
         "data-pipelines",
         "databases-storage"
       ],
-      "example_paths": [],
+      "example_paths": [
+        "examples/file-processing-pipeline/pipeline.json"
+      ],
       "id": "universal.profile.file_processing_pipeline.v1",
       "maturity": "candidate",
       "minimum_conformance": "interoperable",
@@ -3691,7 +2682,9 @@
         "workflow-automation",
         "databases-storage"
       ],
-      "example_paths": [],
+      "example_paths": [
+        "examples/integration-connector/connector.json"
+      ],
       "id": "universal.profile.integration_connector.v1",
       "maturity": "candidate",
       "minimum_conformance": "interoperable",
@@ -3747,7 +2740,9 @@
         "application-services",
         "deployment-ops"
       ],
-      "example_paths": [],
+      "example_paths": [
+        "examples/service-module/service.json"
+      ],
       "id": "universal.profile.service_module.v1",
       "maturity": "candidate",
       "minimum_conformance": "interoperable",

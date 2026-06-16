@@ -1,0 +1,6 @@
+{
+  "schema": "example.static_assets_manifest.v1",
+  "id": "example_web_static_assets",
+  "kind": "static_assets",
+  "files": []
+}

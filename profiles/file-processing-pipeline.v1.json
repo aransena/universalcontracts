@@ -28,7 +28,7 @@
     "upload.kind": ["file_upload"]
   },
   "schemas": [],
-  "examples": [],
+  "examples": ["examples/file-processing-pipeline/pipeline.json"],
   "compatibility": {
     "requires_candidate_contracts": true,
     "output_shape_changes_require_consumer_review": true
